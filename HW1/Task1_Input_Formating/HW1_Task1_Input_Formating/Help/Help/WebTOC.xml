@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<HelpTOC>
+
+  <HelpTOCNode Id="8637ebe0-0efb-491e-b2d8-813624eeafcd" Title="HW1_Task1_Input_Formating" Url="html/78a35868-da95-ea69-8a61-dbdca97d32f1.htm">
+    <HelpTOCNode Id="4d6c8201-00e5-4f49-9838-fe6c2139721d" Title="ConsoleOutput Class" Url="html/a739a7a1-951c-70ea-6b22-feb972701fd9.htm">
+      <HelpTOCNode Title="ConsoleOutput Constructor " Url="html/1f5d3eb4-b3e8-702c-ac1a-ce9a2633d069.htm" />
+      <HelpTOCNode Id="3d46bd9d-c2a0-45b5-ad4e-995c666e4cdb" Title="ConsoleOutput Methods" Url="html/6354d566-20b3-81b8-c6d0-58f113f1ff8f.htm">
+        <HelpTOCNode Title="PrintCoordinates Method " Url="html/582a591e-7ae3-4760-6bfd-1782d97f7b1d.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="b63f56fd-2294-4c8d-a9ba-9b9e5622df30" Title="Input Class" Url="html/44744f3d-99f3-686e-d679-9efe046ff731.htm">
+      <HelpTOCNode Title="Input Constructor " Url="html/3b7dcb60-a005-a1c6-5fcf-7b59c9f3ebde.htm" />
+      <HelpTOCNode Id="43ba6ca4-729d-4d32-a890-ec7ee8406779" Title="Input Properties" Url="html/e7ba5c36-48bb-39f1-b8ae-8937686ac521.htm">
+        <HelpTOCNode Title="X_Value Property " Url="html/a03e7b45-8a7c-12b8-7156-df4db149a645.htm" />
+        <HelpTOCNode Title="Y_Value Property " Url="html/7dcb5667-dfb6-06e9-9d6b-a9531ffed9b9.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="59b7ac95-f5c7-4234-a8c4-b3ea889cb11f" Title="Input Methods" Url="html/62016303-beef-2d7a-6105-47c1d7ec4040.htm">
+        <HelpTOCNode Title="GetInputValues Method " Url="html/452dec2d-bab7-656e-ce19-5a5441aa1666.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="989c2190-9871-4cbf-854c-ae0d4bc027e3" Title="Input Fields" Url="html/9cdffa4a-1edf-55cd-1978-86d2e0ea822b.htm">
+        <HelpTOCNode Title="x Field" Url="html/a4b5f158-49c7-1588-0f8c-9a5af69847bc.htm" />
+        <HelpTOCNode Title="y Field" Url="html/75420de9-1ab3-e5f4-acdd-7e70402f040e.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="d08af83f-7f20-477a-9c25-c745d5d46929" Title="Program Class" Url="html/e35e21ad-3e40-7978-ab19-cd2ee449d944.htm">
+      <HelpTOCNode Title="Program Constructor " Url="html/209c3c71-95da-ba68-6a8a-ca56ea7088ff.htm" />
+      <HelpTOCNode Id="53b93da2-628b-4790-ad66-e9f0129d915f" Title="Program Methods" Url="html/b26d0fa7-4790-1f2e-0d7f-782e509f495c.htm">
+        <HelpTOCNode Title="Main Method " Url="html/d20b9668-909a-cbca-2496-02068cac48ac.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+</HelpTOC>

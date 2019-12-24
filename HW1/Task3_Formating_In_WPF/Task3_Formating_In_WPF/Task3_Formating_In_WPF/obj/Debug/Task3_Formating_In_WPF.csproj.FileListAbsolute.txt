@@ -13,3 +13,17 @@ C:\Users\IlyasNBal\Desktop\git\HomeWork-master\HW1\Task3_Formating_In_WPF\Task3_
 C:\Users\IlyasNBal\Desktop\git\HomeWork-master\HW1\Task3_Formating_In_WPF\Task3_Formating_In_WPF\Task3_Formating_In_WPF\obj\Debug\Task3_Formating_In_WPF.csproj.CoreCompileInputs.cache
 C:\Users\IlyasNBal\Desktop\git\HomeWork-master\HW1\Task3_Formating_In_WPF\Task3_Formating_In_WPF\Task3_Formating_In_WPF\obj\Debug\Task3_Formating_In_WPF.exe
 C:\Users\IlyasNBal\Desktop\git\HomeWork-master\HW1\Task3_Formating_In_WPF\Task3_Formating_In_WPF\Task3_Formating_In_WPF\obj\Debug\Task3_Formating_In_WPF.pdb
+D:\homework\HomeWork\HW1\Task3_Formating_In_WPF\Task3_Formating_In_WPF\Task3_Formating_In_WPF\bin\Debug\Task3_Formating_In_WPF.exe.config
+D:\homework\HomeWork\HW1\Task3_Formating_In_WPF\Task3_Formating_In_WPF\Task3_Formating_In_WPF\bin\Debug\Task3_Formating_In_WPF.exe
+D:\homework\HomeWork\HW1\Task3_Formating_In_WPF\Task3_Formating_In_WPF\Task3_Formating_In_WPF\bin\Debug\Task3_Formating_In_WPF.pdb
+D:\homework\HomeWork\HW1\Task3_Formating_In_WPF\Task3_Formating_In_WPF\Task3_Formating_In_WPF\obj\Debug\MainWindow.g.cs
+D:\homework\HomeWork\HW1\Task3_Formating_In_WPF\Task3_Formating_In_WPF\Task3_Formating_In_WPF\obj\Debug\App.g.cs
+D:\homework\HomeWork\HW1\Task3_Formating_In_WPF\Task3_Formating_In_WPF\Task3_Formating_In_WPF\obj\Debug\Task3_Formating_In_WPF_MarkupCompile.cache
+D:\homework\HomeWork\HW1\Task3_Formating_In_WPF\Task3_Formating_In_WPF\Task3_Formating_In_WPF\obj\Debug\Task3_Formating_In_WPF_MarkupCompile.lref
+D:\homework\HomeWork\HW1\Task3_Formating_In_WPF\Task3_Formating_In_WPF\Task3_Formating_In_WPF\obj\Debug\MainWindow.baml
+D:\homework\HomeWork\HW1\Task3_Formating_In_WPF\Task3_Formating_In_WPF\Task3_Formating_In_WPF\obj\Debug\Task3_Formating_In_WPF.g.resources
+D:\homework\HomeWork\HW1\Task3_Formating_In_WPF\Task3_Formating_In_WPF\Task3_Formating_In_WPF\obj\Debug\Task3_Formating_In_WPF.Properties.Resources.resources
+D:\homework\HomeWork\HW1\Task3_Formating_In_WPF\Task3_Formating_In_WPF\Task3_Formating_In_WPF\obj\Debug\Task3_Formating_In_WPF.csproj.GenerateResource.cache
+D:\homework\HomeWork\HW1\Task3_Formating_In_WPF\Task3_Formating_In_WPF\Task3_Formating_In_WPF\obj\Debug\Task3_Formating_In_WPF.exe
+D:\homework\HomeWork\HW1\Task3_Formating_In_WPF\Task3_Formating_In_WPF\Task3_Formating_In_WPF\obj\Debug\Task3_Formating_In_WPF.pdb
+D:\homework\HomeWork\HW1\Task3_Formating_In_WPF\Task3_Formating_In_WPF\Task3_Formating_In_WPF\bin\Debug\Task3_Formating_In_WPF.xml

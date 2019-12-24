@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<HelpKI>
+  <HelpKINode Title="ConsoleOutput class">
+    <HelpKINode Title="ConsoleOutput Class" Url="html/a739a7a1-951c-70ea-6b22-feb972701fd9.htm" />
+    <HelpKINode Title="constructor" Url="html/1f5d3eb4-b3e8-702c-ac1a-ce9a2633d069.htm" />
+    <HelpKINode Title="methods" Url="html/6354d566-20b3-81b8-c6d0-58f113f1ff8f.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ConsoleOutput.ConsoleOutput constructor" Url="html/1f5d3eb4-b3e8-702c-ac1a-ce9a2633d069.htm" />
+  <HelpKINode Title="ConsoleOutput.PrintCoordinates method" Url="html/582a591e-7ae3-4760-6bfd-1782d97f7b1d.htm" />
+  <HelpKINode Title="GetInputValues method" Url="html/452dec2d-bab7-656e-ce19-5a5441aa1666.htm" />
+  <HelpKINode Title="HW1_Task1_Input_Formating namespace" Url="html/78a35868-da95-ea69-8a61-dbdca97d32f1.htm" />
+  <HelpKINode Title="HW1_Task1_Input_Formating.ConsoleOutput class" Url="html/a739a7a1-951c-70ea-6b22-feb972701fd9.htm" />
+  <HelpKINode Title="HW1_Task1_Input_Formating.Input class" Url="html/44744f3d-99f3-686e-d679-9efe046ff731.htm" />
+  <HelpKINode Title="HW1_Task1_Input_Formating.Program class" Url="html/e35e21ad-3e40-7978-ab19-cd2ee449d944.htm" />
+  <HelpKINode Title="Input class">
+    <HelpKINode Title="Input Class" Url="html/44744f3d-99f3-686e-d679-9efe046ff731.htm" />
+    <HelpKINode Title="constructor" Url="html/3b7dcb60-a005-a1c6-5fcf-7b59c9f3ebde.htm" />
+    <HelpKINode Title="fields" Url="html/9cdffa4a-1edf-55cd-1978-86d2e0ea822b.htm" />
+    <HelpKINode Title="methods" Url="html/62016303-beef-2d7a-6105-47c1d7ec4040.htm" />
+    <HelpKINode Title="properties" Url="html/e7ba5c36-48bb-39f1-b8ae-8937686ac521.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Input.GetInputValues method" Url="html/452dec2d-bab7-656e-ce19-5a5441aa1666.htm" />
+  <HelpKINode Title="Input.Input constructor" Url="html/3b7dcb60-a005-a1c6-5fcf-7b59c9f3ebde.htm" />
+  <HelpKINode Title="Input.x field" Url="html/a4b5f158-49c7-1588-0f8c-9a5af69847bc.htm" />
+  <HelpKINode Title="Input.X_Value property" Url="html/a03e7b45-8a7c-12b8-7156-df4db149a645.htm" />
+  <HelpKINode Title="Input.y field" Url="html/75420de9-1ab3-e5f4-acdd-7e70402f040e.htm" />
+  <HelpKINode Title="Input.Y_Value property" Url="html/7dcb5667-dfb6-06e9-9d6b-a9531ffed9b9.htm" />
+  <HelpKINode Title="Main method" Url="html/d20b9668-909a-cbca-2496-02068cac48ac.htm" />
+  <HelpKINode Title="PrintCoordinates method" Url="html/582a591e-7ae3-4760-6bfd-1782d97f7b1d.htm" />
+  <HelpKINode Title="Program class">
+    <HelpKINode Title="Program Class" Url="html/e35e21ad-3e40-7978-ab19-cd2ee449d944.htm" />
+    <HelpKINode Title="constructor" Url="html/209c3c71-95da-ba68-6a8a-ca56ea7088ff.htm" />
+    <HelpKINode Title="methods" Url="html/b26d0fa7-4790-1f2e-0d7f-782e509f495c.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Program.Main method" Url="html/d20b9668-909a-cbca-2496-02068cac48ac.htm" />
+  <HelpKINode Title="Program.Program constructor" Url="html/209c3c71-95da-ba68-6a8a-ca56ea7088ff.htm" />
+  <HelpKINode Title="x field" Url="html/a4b5f158-49c7-1588-0f8c-9a5af69847bc.htm" />
+  <HelpKINode Title="X_Value property" Url="html/a03e7b45-8a7c-12b8-7156-df4db149a645.htm" />
+  <HelpKINode Title="y field" Url="html/75420de9-1ab3-e5f4-acdd-7e70402f040e.htm" />
+  <HelpKINode Title="Y_Value property" Url="html/7dcb5667-dfb6-06e9-9d6b-a9531ffed9b9.htm" />
+</HelpKI>

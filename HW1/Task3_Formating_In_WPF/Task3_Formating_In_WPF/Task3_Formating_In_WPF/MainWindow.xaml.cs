@@ -30,6 +30,12 @@ namespace Task3_Formating_In_WPF
 			InitializeComponent();
 		}
 
+		/// <summary>
+		/// Счиать строку из TextBox1,Разпарсить, Вывести в окно
+		/// </summary>
+		/// <exception cref="Exception">
+		/// Отлавливает и выводит любые исключения
+		/// </exception>
 		private void Button_Click(object sender, RoutedEventArgs e)
 		{
 			string Value = TextBox1.Text;
@@ -47,7 +53,12 @@ namespace Task3_Formating_In_WPF
 				MessageBox.Show(ex.Message);
 			}
 		}
-
+		/// <summary>
+		/// Счиать строку из файла,парсит,выводит
+		/// </summary>
+		/// <exception cref="Exception">
+		/// Отлавливает и выводит любые исключения
+		/// </exception>
 		private void Button_Click_1(object sender, RoutedEventArgs e)
 		{
 			List<string> lines = new List<string>();

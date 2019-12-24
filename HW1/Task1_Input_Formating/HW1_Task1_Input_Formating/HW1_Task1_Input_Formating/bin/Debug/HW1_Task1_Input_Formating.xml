@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>HW1_Task1_Input_Formating</name>
+    </assembly>
+    <members>
+        <member name="T:HW1_Task1_Input_Formating.Program">
+            <summary>
+            Основной класс
+            </summary>
+        </member>
+        <member name="T:HW1_Task1_Input_Formating.Input">
+            <summary>
+            Класс работающий со входными данными.
+            </summary>
+        </member>
+        <member name="M:HW1_Task1_Input_Formating.Input.GetInputValues">
+            <summary>
+            Метод работает с данными из консоли разбивает строку на части по запятой
+            и сохраняет части в ранее объявленных переменных х,у
+            </summary>
+            <exception cref="T:System.Exception">
+            Отлавливает и выводит в консоль любые исключения
+            </exception>
+        </member>
+        <member name="P:HW1_Task1_Input_Formating.Input.X_Value">
+            <summary>
+            Параметры для получения доступа к приватным переменным
+            </summary>
+            <param name="X_Value"> Координата оси Х</param>
+            <param name="Y_Value"> Координата оси Y</param>
+        </member>
+        <member name="T:HW1_Task1_Input_Formating.ConsoleOutput">
+            <summary>
+            Класс для работы с выводом консоли
+            </summary>
+            <param name="x">Координата Х</param>
+            <param name="y">Координата Y</param>
+        </member>
+    </members>
+</doc>

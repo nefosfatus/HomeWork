@@ -30,7 +30,7 @@ namespace HW1_Task1_Input_Formating
     /// </summary>
     class Input
     {
-        private decimal x;
+        public decimal x;
         private decimal y;
         /// <summary>
         /// Метод работает с данными из консоли разбивает строку на части по запятой
@@ -73,6 +73,11 @@ namespace HW1_Task1_Input_Formating
         }
    
     }
+    /// <summary>
+    /// Класс для работы с выводом консоли
+    /// </summary>
+    /// <param name="x">Координата Х</param>
+    /// <param name="y">Координата Y</param>
     class ConsoleOutput
     {
         public void PrintCoordinates(decimal x, decimal y) 

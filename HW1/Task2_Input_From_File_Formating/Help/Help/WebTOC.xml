@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<HelpTOC>
+
+  <HelpTOCNode Id="ea80421f-3a3f-412e-af03-9fc664ce4d38" Title="Task2_Input_From_File_Formating" Url="html/7b330194-36c4-eaf0-d3d7-d2d966206b95.htm">
+    <HelpTOCNode Id="f578003e-973f-4764-99ae-2d308b8652d1" Title="ConsoleOutput Class" Url="html/28308762-b7b3-7abd-f072-aed959e90f09.htm">
+      <HelpTOCNode Title="ConsoleOutput Constructor " Url="html/67440a28-40c2-262b-2cdd-adde3418a38f.htm" />
+      <HelpTOCNode Id="80ef4fad-1e58-4a21-88a7-c919d15cb6c5" Title="ConsoleOutput Methods" Url="html/76359bdb-1c92-a764-2bfc-dfbf280ee41c.htm">
+        <HelpTOCNode Title="PrintCoordinates Method " Url="html/43ffd232-af89-53c4-7e5e-3349673ea169.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="ce8eb3c7-ba29-4e3e-8470-e15afbe4d056" Title="Input Class" Url="html/34d8d0d1-def4-c809-903f-8e3ac23e9280.htm">
+      <HelpTOCNode Title="Input Constructor " Url="html/952ad8da-5d2a-51de-fb10-b1b5db4c064c.htm" />
+      <HelpTOCNode Id="d1908499-e679-4cc7-a874-66c12034a78b" Title="Input Properties" Url="html/3a60682e-5d00-1fdd-99a5-d199e9043d50.htm">
+        <HelpTOCNode Title="X_Value Property " Url="html/4ca3d322-890e-34fe-80dd-29ce4f9fde9f.htm" />
+        <HelpTOCNode Title="Y_Value Property " Url="html/dd99459f-828b-f918-40a0-a40b03f73663.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="3707c766-6f40-4800-9517-87381f3632a8" Title="Input Methods" Url="html/da2d91a9-99cc-44cc-2d8a-21d2bafc406a.htm">
+        <HelpTOCNode Title="GetInputValues Method " Url="html/10a3fdcc-6e53-84ee-273e-3aa343cba79d.htm" />
+        <HelpTOCNode Title="GetInputValuesFromFile Method " Url="html/e55cc4a1-fd9c-8d29-ddf8-3445cc7faa45.htm" />
+        <HelpTOCNode Title="SplitValues Method " Url="html/0c13b480-dcb9-1a62-2a8b-509b7932811f.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="e5ef4a66-d117-4c57-b03c-1a76ce8adff8" Title="Input Fields" Url="html/df31ceb6-3597-9635-adfe-fee0eabb7729.htm">
+        <HelpTOCNode Title="x Field" Url="html/ae85decc-9bfc-1def-a8cc-ad1b00f64bb9.htm" />
+        <HelpTOCNode Title="y Field" Url="html/e8dfe2db-3b91-b0d4-0926-8b69f4439032.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="29d9b085-2c77-43af-ba43-8e84b7b709fd" Title="Program Class" Url="html/48cb9534-4094-25f7-9b0b-53cba761c971.htm">
+      <HelpTOCNode Title="Program Constructor " Url="html/cc042677-0bf1-0839-2d25-d91c7e5bd400.htm" />
+      <HelpTOCNode Id="be99707f-d4df-4f97-91b0-94bcda1e56db" Title="Program Methods" Url="html/0ae77243-6351-66a9-865b-0e99577461de.htm">
+        <HelpTOCNode Title="Main Method " Url="html/8013e316-a9b4-2bad-f95e-dc75e1c20534.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+</HelpTOC>

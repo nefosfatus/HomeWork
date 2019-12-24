@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Task3_Formating_In_WPF</name>
+    </assembly>
+    <members>
+        <member name="T:Task3_Formating_In_WPF.App">
+            <summary>
+            Логика взаимодействия для App.xaml
+            </summary>
+            <summary>
+            App
+            </summary>
+        </member>
+        <member name="M:Task3_Formating_In_WPF.App.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="M:Task3_Formating_In_WPF.App.Main">
+            <summary>
+            Application Entry Point.
+            </summary>
+        </member>
+        <member name="T:Task3_Formating_In_WPF.MainWindow">
+            <summary>
+            Логика взаимодействия для MainWindow.xaml
+            </summary>
+            <summary>
+            MainWindow
+            </summary>
+        </member>
+        <member name="M:Task3_Formating_In_WPF.MainWindow.Button_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Счиать строку из TextBox1,Разпарсить, Вывести в окно
+            </summary>
+            <exception cref="T:System.Exception">
+            Отлавливает и выводит любые исключения
+            </exception>
+        </member>
+        <member name="M:Task3_Formating_In_WPF.MainWindow.Button_Click_1(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Счиать строку из файла,парсит,выводит
+            </summary>
+            <exception cref="T:System.Exception">
+            Отлавливает и выводит любые исключения
+            </exception>
+        </member>
+        <member name="M:Task3_Formating_In_WPF.MainWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Task3_Formating_In_WPF.Properties.Resources">
+            <summary>
+              Класс ресурсов со строгим типом для поиска локализованных строк и пр.
+            </summary>
+        </member>
+        <member name="P:Task3_Formating_In_WPF.Properties.Resources.ResourceManager">
+            <summary>
+              Возврат кэшированного экземпляра ResourceManager, используемого этим классом.
+            </summary>
+        </member>
+        <member name="P:Task3_Formating_In_WPF.Properties.Resources.Culture">
+            <summary>
+              Переопределяет свойство CurrentUICulture текущего потока для всех
+              подстановки ресурсов с помощью этого класса ресурсов со строгим типом.
+            </summary>
+        </member>
+    </members>
+</doc>

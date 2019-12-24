@@ -1,4 +1,3 @@
-D:\homework\HomeWork\HW1\Task1_Input_Formating\HW1_Task1_Input_Formating\HW1_Task1_Input_Formating\obj\Debug\HW1_Task1_Input_Formating.csprojAssemblyReference.cache
 D:\homework\HomeWork\HW1\Task1_Input_Formating\HW1_Task1_Input_Formating\HW1_Task1_Input_Formating\bin\Debug\HW1_Task1_Input_Formating.exe.config
 D:\homework\HomeWork\HW1\Task1_Input_Formating\HW1_Task1_Input_Formating\HW1_Task1_Input_Formating\bin\Debug\HW1_Task1_Input_Formating.exe
 D:\homework\HomeWork\HW1\Task1_Input_Formating\HW1_Task1_Input_Formating\HW1_Task1_Input_Formating\bin\Debug\HW1_Task1_Input_Formating.pdb
@@ -11,3 +10,5 @@ C:\Users\IlyasNBal\Desktop\git\HomeWork-master\HW1\Task1_Input_Formating\HW1_Tas
 C:\Users\IlyasNBal\Desktop\git\HomeWork-master\HW1\Task1_Input_Formating\HW1_Task1_Input_Formating\HW1_Task1_Input_Formating\obj\Debug\HW1_Task1_Input_Formating.csproj.CoreCompileInputs.cache
 C:\Users\IlyasNBal\Desktop\git\HomeWork-master\HW1\Task1_Input_Formating\HW1_Task1_Input_Formating\HW1_Task1_Input_Formating\obj\Debug\HW1_Task1_Input_Formating.exe
 C:\Users\IlyasNBal\Desktop\git\HomeWork-master\HW1\Task1_Input_Formating\HW1_Task1_Input_Formating\HW1_Task1_Input_Formating\obj\Debug\HW1_Task1_Input_Formating.pdb
+D:\homework\HomeWork\HW1\Task1_Input_Formating\HW1_Task1_Input_Formating\HW1_Task1_Input_Formating\bin\Debug\HW1_Task1_Input_Formating.xml
+D:\homework\HomeWork\HW1\Task1_Input_Formating\HW1_Task1_Input_Formating\HW1_Task1_Input_Formating\obj\Debug\HW1_Task1_Input_Formating.csprojAssemblyReference.cache

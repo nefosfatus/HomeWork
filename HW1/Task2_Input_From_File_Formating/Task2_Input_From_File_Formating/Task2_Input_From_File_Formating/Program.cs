@@ -10,6 +10,10 @@ namespace Task2_Input_From_File_Formating
 {
     class Program
     {
+        /// <summary>
+        /// Основной класс
+        /// </summary>
+
         static void Main(string[] args)
         {
             Input input = new Input();
@@ -29,11 +33,21 @@ namespace Task2_Input_From_File_Formating
             
         }
     }
-
+    /// <summary>
+    /// Класс работающий со входными данными.
+    /// </summary>
     class Input
     {
 		private decimal x;
 		private decimal y;
+        /// <summary>
+        /// Метод работает с данными из консоли разбивает строку на части по запятой
+        /// и сохраняет части в ранее объявленных переменных х,у
+        /// </summary>
+        /// <exception cref="Exception">
+        /// Отлавливает и выводит в консоль любые исключения
+        /// </exception>
+
 		public void GetInputValues()
 		{
 			Console.WriteLine("Пожалуйста введите координаты");
@@ -53,6 +67,14 @@ namespace Task2_Input_From_File_Formating
 				Console.WriteLine(ex.Message);
 			}
 		}
+
+        /// <summary>
+        /// Метод работает с данными из файла 
+        /// </summary>
+        /// <exception cref="Exception">
+        /// Отлавливает и выводит в консоль любые исключения
+        /// </exception>
+        /// <returns> Возвращает строки в списке lines</returns>
         public List<string> GetInputValuesFromFile()
         {
             Console.WriteLine("Считываем данные из файла");
@@ -77,6 +99,14 @@ namespace Task2_Input_From_File_Formating
 
         }
 
+        /// <summary>
+        /// Метод работает со строками и разбивает их на части
+        /// и сохраняет части в ранее объявленных переменных х,у
+        /// </summary>
+        /// <exception cref="Exception">
+        /// Отлавливает и выводит в консоль любые исключения
+        /// </exception>
+        /// <param name="line"> Принимает строки из листа lines</param>
         public string[] SplitValues(string line)
         {
             
@@ -96,6 +126,12 @@ namespace Task2_Input_From_File_Formating
 
             
         }
+        /// <summary>
+        /// Параметры для получения доступа к приватным переменным
+        /// </summary>
+        /// <param name="X_Value"> Координата оси Х</param>
+        /// <param name="Y_Value"> Координата оси Y</param>
+
         public decimal X_Value
         {
             get { return x; }
@@ -106,6 +142,12 @@ namespace Task2_Input_From_File_Formating
         }
    
     }
+    /// <summary>
+    /// Класс для работы с выводом консоли
+    /// </summary>
+    /// <param name="x">Координата Х</param>
+    /// <param name="y">Координата Y</param>
+
     class ConsoleOutput
     {
 		public void PrintCoordinates(decimal x, decimal y)
