@@ -1,0 +1,5 @@
+D:\homework\HomeWork\HW1\Task1_Input_Formating\HW1_Task1_Input_Formating\HW1_Task1_Input_Formating\bin\Release\HW1_Task1_Input_Formating.exe.config
+D:\homework\HomeWork\HW1\Task1_Input_Formating\HW1_Task1_Input_Formating\HW1_Task1_Input_Formating\bin\Release\HW1_Task1_Input_Formating.exe
+D:\homework\HomeWork\HW1\Task1_Input_Formating\HW1_Task1_Input_Formating\HW1_Task1_Input_Formating\bin\Release\HW1_Task1_Input_Formating.pdb
+D:\homework\HomeWork\HW1\Task1_Input_Formating\HW1_Task1_Input_Formating\HW1_Task1_Input_Formating\obj\Release\HW1_Task1_Input_Formating.exe
+D:\homework\HomeWork\HW1\Task1_Input_Formating\HW1_Task1_Input_Formating\HW1_Task1_Input_Formating\obj\Release\HW1_Task1_Input_Formating.pdb
