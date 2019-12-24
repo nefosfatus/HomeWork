@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -19,7 +20,9 @@ namespace Task2_Input_From_File_Formating
                 foreach(var line in ValuesFromFile)
                 {
                     string[] Coordinates = input.SplitValues(line);
-                    consoleOutput.PrintCoordinates(Coordinates[0], Coordinates[1]);
+					decimal x = decimal.Parse(Coordinates[0], CultureInfo.InvariantCulture);
+					decimal y = decimal.Parse(Coordinates[1], CultureInfo.InvariantCulture);
+					consoleOutput.PrintCoordinates(x, y);
                 }
                 Console.ReadKey();
             }
@@ -29,24 +32,27 @@ namespace Task2_Input_From_File_Formating
 
     class Input
     {
-        private string x;
-        private string y;
-        public void GetInputValues()
-        {
-            Console.WriteLine("Пожалуйста введите координаты");
-            string Value = Console.ReadLine();
-            try
-            {
-                string[] SplittedValues = Value.Split(',');
-                x = SplittedValues[0];
-                y = SplittedValues[1];
-            }
-            catch(Exception ex)
-            {
-                Console.WriteLine("Введите оба ЧИСЛОВЫХ значения\n");
-                Console.WriteLine(ex.Message);
-            }
-        }
+		private decimal x;
+		private decimal y;
+		public void GetInputValues()
+		{
+			Console.WriteLine("Пожалуйста введите координаты");
+			string Value = Console.ReadLine();
+			try
+			{
+				string[] SplittedValues = Value.Split(',');
+				var ss = SplittedValues[0];
+				var sd = SplittedValues[1];
+
+				x = decimal.Parse(SplittedValues[0], CultureInfo.InvariantCulture);
+				y = decimal.Parse(SplittedValues[1], CultureInfo.InvariantCulture);
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine("Введите оба ЧИСЛОВЫХ значения\n");
+				Console.WriteLine(ex.Message);
+			}
+		}
         public List<string> GetInputValuesFromFile()
         {
             Console.WriteLine("Считываем данные из файла");
@@ -90,11 +96,11 @@ namespace Task2_Input_From_File_Formating
 
             
         }
-        public string X_Value
+        public decimal X_Value
         {
             get { return x; }
         }
-        public string Y_Value
+        public decimal Y_Value
         {
             get { return y; }
         }
@@ -102,12 +108,13 @@ namespace Task2_Input_From_File_Formating
     }
     class ConsoleOutput
     {
-        public void PrintCoordinates(string x, string y) 
-        {
-            Console.WriteLine($"\nX:{x}, Y:{y}");
-            
-        }
+		public void PrintCoordinates(decimal x, decimal y)
+		{
+			string ForPrint = string.Format("X:{0:N6} Y:{1:N6}", x, y);
+			Console.WriteLine(ForPrint);
+			
+		}
 
-    }
+	}
 
 }
