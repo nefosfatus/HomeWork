@@ -19,8 +19,8 @@ namespace HW1_Task1_Input_Formating
             while (true) //loop
             {
                 input.GetInputValues();
-                var x = input.X_Value;
-                var y = input.Y_Value;
+                var x = input.ValueX;
+                var y = input.ValueY;
                 consoleOutput.PrintCoordinates(x, y);
             }
         }
@@ -30,8 +30,8 @@ namespace HW1_Task1_Input_Formating
     /// </summary>
     class Input
     {
-        public decimal x;
-        private decimal y;
+        private decimal _x;
+        private decimal _y;
         /// <summary>
         /// Метод работает с данными из консоли разбивает строку на части по запятой
         /// и сохраняет части в ранее объявленных переменных х,у
@@ -46,11 +46,9 @@ namespace HW1_Task1_Input_Formating
             try
             {
                 string[] SplittedValues = Value.Split(',');
-				var ss = SplittedValues[0];
-				var sd = SplittedValues[1];
 
-				x = decimal.Parse(SplittedValues[0], CultureInfo.InvariantCulture);
-                y = decimal.Parse(SplittedValues[1], CultureInfo.InvariantCulture);
+				_x = decimal.Parse(SplittedValues[0], CultureInfo.InvariantCulture);
+                _y = decimal.Parse(SplittedValues[1], CultureInfo.InvariantCulture);
             }
             catch(Exception ex)
             {
@@ -61,15 +59,15 @@ namespace HW1_Task1_Input_Formating
         /// <summary>
         /// Параметры для получения доступа к приватным переменным
         /// </summary>
-        /// <param name="X_Value"> Координата оси Х</param>
-        /// <param name="Y_Value"> Координата оси Y</param>
-        public decimal X_Value
+        /// <param name="ValueX"> Координата оси Х</param>
+        /// <param name="ValueY"> Координата оси Y</param>
+        public decimal ValueX
         {
-            get { return x; }
+            get { return _x; }
         }
-        public decimal Y_Value
+        public decimal ValueY
         {
-            get { return y; }
+            get { return _y; }
         }
    
     }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -18,15 +19,17 @@ namespace Task2_Input_From_File_Formating
         {
             Input input = new Input();
             ConsoleOutput consoleOutput = new ConsoleOutput();
+            Saver saver = new Saver();
             while (true)
             {
                 List<string> ValuesFromFile = input.GetInputValuesFromFile();
                 foreach(var line in ValuesFromFile)
                 {
                     string[] Coordinates = input.SplitValues(line);
-					decimal x = decimal.Parse(Coordinates[0], CultureInfo.InvariantCulture);
-					decimal y = decimal.Parse(Coordinates[1], CultureInfo.InvariantCulture);
-					consoleOutput.PrintCoordinates(x, y);
+					decimal _x = decimal.Parse(Coordinates[0], CultureInfo.InvariantCulture);
+					decimal _y = decimal.Parse(Coordinates[1], CultureInfo.InvariantCulture);
+					string coordinatesLine = consoleOutput.PrintCoordinates(_x, _y);
+                    saver.SaveStringInFile(coordinatesLine);
                 }
                 Console.ReadKey();
             }
@@ -38,33 +41,31 @@ namespace Task2_Input_From_File_Formating
     /// </summary>
     class Input
     {
-		private decimal x;
-		private decimal y;
+		private decimal _x;
+		private decimal _y;
         /// <summary>
         /// Метод работает с данными из консоли разбивает строку на части по запятой
         /// и сохраняет части в ранее объявленных переменных х,у
         /// </summary>
-        /// <exception cref="Exception">
-        /// Отлавливает и выводит в консоль любые исключения
+        /// <exception cref="FormatException">
+        /// Отлавливает и выводит в консоль исключения
+        /// При неверном формате входных данных
         /// </exception>
 
-		public void GetInputValues()
+        public void GetInputValues()
 		{
 			Console.WriteLine("Пожалуйста введите координаты");
 			string Value = Console.ReadLine();
 			try
 			{
 				string[] SplittedValues = Value.Split(',');
-				var ss = SplittedValues[0];
-				var sd = SplittedValues[1];
-
-				x = decimal.Parse(SplittedValues[0], CultureInfo.InvariantCulture);
-				y = decimal.Parse(SplittedValues[1], CultureInfo.InvariantCulture);
+				_x = decimal.Parse(SplittedValues[0], CultureInfo.InvariantCulture);
+				_y = decimal.Parse(SplittedValues[1], CultureInfo.InvariantCulture);
 			}
-			catch (Exception ex)
+			catch (Exception)
 			{
 				Console.WriteLine("Введите оба ЧИСЛОВЫХ значения\n");
-				Console.WriteLine(ex.Message);
+                throw new FormatException("Неверный формат входных данных");
 			}
 		}
 
@@ -79,10 +80,11 @@ namespace Task2_Input_From_File_Formating
         {
             Console.WriteLine("Считываем данные из файла");
             List<string> lines = new List<string>();
-            FileStream file = new FileStream("Input.txt", FileMode.Open);
-            StreamReader readFile = new StreamReader(file);
+            
             try
             {
+                FileStream file = new FileStream("Input.txt", FileMode.Open);
+                StreamReader readFile = new StreamReader(file);
                 while (!readFile.EndOfStream)
                 {
                     lines.Add(readFile.ReadLine());
@@ -94,6 +96,8 @@ namespace Task2_Input_From_File_Formating
             {
 
                 Console.WriteLine(ex.Message);
+                throw new IOException("Файл не найден");
+                throw new FormatException("Формат данных в файле не верный");
             }
             return lines;
 
@@ -120,8 +124,7 @@ namespace Task2_Input_From_File_Formating
             {
                 Console.WriteLine("Введите верный формат чисел, 1 строка - 1 пара\n");
                 Console.WriteLine(ex.Message);
-                string[] Nothing = null;
-                return Nothing;
+                return null;
             }
 
             
@@ -129,34 +132,59 @@ namespace Task2_Input_From_File_Formating
         /// <summary>
         /// Параметры для получения доступа к приватным переменным
         /// </summary>
-        /// <param name="X_Value"> Координата оси Х</param>
-        /// <param name="Y_Value"> Координата оси Y</param>
+        /// <param name="ValueX"> Координата оси Х</param>
+        /// <param name="ValueY"> Координата оси Y</param>
 
-        public decimal X_Value
+        public decimal ValueX
         {
-            get { return x; }
+            get { return _x; }
         }
-        public decimal Y_Value
+        public decimal ValueY
         {
-            get { return y; }
+            get { return _y; }
         }
    
     }
     /// <summary>
     /// Класс для работы с выводом консоли
     /// </summary>
-    /// <param name="x">Координата Х</param>
-    /// <param name="y">Координата Y</param>
+    /// <param name="_x">Координата Х</param>
+    /// <param name="_y">Координата Y</param>
 
     class ConsoleOutput
     {
-		public void PrintCoordinates(decimal x, decimal y)
+		public string PrintCoordinates(decimal x, decimal y)
 		{
 			string ForPrint = string.Format("X:{0:N6} Y:{1:N6}", x, y);
 			Console.WriteLine(ForPrint);
+            return ForPrint;
 			
 		}
 
 	}
+
+    /// <summary>
+    /// Класс для сохранения отформатированных данных в файл
+    /// </summary>
+    /// <exception cref="Exception">
+    /// Отлавливает и выводит в консоль любые исключения
+    /// </exception>
+    class Saver
+    {
+        public void SaveStringInFile(string lines)
+        {
+            try
+            {
+                File.AppendAllText("Output.txt", lines+Environment.NewLine);
+                Console.WriteLine("Сохранено");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+              
+            }
+            
+        }
+    }
 
 }

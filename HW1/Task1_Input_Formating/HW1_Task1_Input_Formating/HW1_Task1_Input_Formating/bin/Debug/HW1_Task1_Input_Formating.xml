@@ -23,12 +23,12 @@
             Отлавливает и выводит в консоль любые исключения
             </exception>
         </member>
-        <member name="P:HW1_Task1_Input_Formating.Input.X_Value">
+        <member name="P:HW1_Task1_Input_Formating.Input.ValueX">
             <summary>
             Параметры для получения доступа к приватным переменным
             </summary>
-            <param name="X_Value"> Координата оси Х</param>
-            <param name="Y_Value"> Координата оси Y</param>
+            <param name="ValueX"> Координата оси Х</param>
+            <param name="ValueY"> Координата оси Y</param>
         </member>
         <member name="T:HW1_Task1_Input_Formating.ConsoleOutput">
             <summary>
