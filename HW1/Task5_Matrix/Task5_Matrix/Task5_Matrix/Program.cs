@@ -11,23 +11,31 @@ namespace Task5_Matrix
     /// </summary>
     class Program
     {
+
         static void Main(string[] args)
         {
+            ///Создаем экземпляры классов для работы с матрицами и пользовательским вводом
             Matrix matrix = new Matrix();
             Input userInput = new Input();
 
+            ///Спрашиваем нужно ли создавать первую матрицу 
             bool answer = userInput.GetUserInput();
-            var m = userInput.M;
-            var n = userInput.N;
-            var firstMatrix = matrix.CreateMatrix(m, n, answer);
-
+            var column1 = userInput.Row;
+            var row1 = userInput.Column;
+            var firstMatrix = matrix.CreateMatrix(column1, row1, answer);
+            ///Спрашиваем нужно ли создавать вторум матрицу 
             bool answer2 = userInput.GetUserInput();
-            var m2 = userInput.M;
-            var n2 = userInput.N;
-            var secondMatrix = matrix.CreateMatrix(m2, n2, answer2);
-            _ = userInput.DoYouWantSum();
-            _ = matrix.SumMatrix(firstMatrix, secondMatrix, m, n, m2, n2);
-            _ =  matrix.MultiplicateMatrix(firstMatrix, secondMatrix, m, n, m2, n2);
+            var column2 = userInput.Row;
+            var row2 = userInput.Column;
+            var secondMatrix = matrix.CreateMatrix(column2, row2, answer2);
+            ///Нужо ли просуммировать созданные матрицы
+            userInput.DoYouWantSum();
+            matrix.SumMatrix(firstMatrix, secondMatrix, column1, row1, column2, row2);
+
+            /// Нужно ли перемножать созданные матрицы
+            userInput.DoYouWantMult();
+            matrix.MultiplicateMatrix(firstMatrix, secondMatrix, column1, row1, column2, row2);
+
 
             Console.ReadKey();
         }
@@ -36,30 +44,38 @@ namespace Task5_Matrix
     /// <summary>
     /// Класс для работы с матрицами
     /// </summary>
-    /// <param name="m">Количество строк</param>
-    /// <param name="n">Количество столбцов</param>
+    /// <param name="column1">Количество строк</param>
+    /// <param name="row1">Количество столбцов</param>
     class Matrix
     {
-        public int[,] CreateMatrix(int m, int n, bool answer)
+        /// <summary>
+        /// Метод для генерирования матрицы
+        /// </summary>
+        /// <param name="column1">Количество колонок матрицы</param>
+        /// <param name="row1">Количество строк матрицы</param>
+        /// <param name="answer">Создавать ли матрицу True/False</param>
+        /// <returns>Возвращает двумерный массив заполненый целыми
+        /// числами от 0 до 99</returns>
+        public int[,] CreateMatrix(int column1, int row1, bool answer)
         {
             if (answer)
             {
                 try
                 {
                     Random randomizer = new Random();
-                    if (m > 0 && n > 0)
+                    if (column1 > 0 && row1 > 0)
                     {
-                        int[,] NewMatrix = new int[m, n];
-                        for (int i = 0; i < m; i++)
+                        int[,] newMatrix = new int[column1, row1];
+                        for (int i = 0; i < column1; i++)
                         {
-                            for (int j = 0; j < n; j++)
+                            for (int j = 0; j < row1; j++)
                             {
-                                NewMatrix[i, j] = randomizer.Next(0, 99);
-                                Console.Write("{0}\t", NewMatrix[i, j]);
+                                newMatrix[i, j] = randomizer.Next(0, 99);
+                                Console.Write("{0}\t", newMatrix[i, j]);
                             }
                             Console.WriteLine();
                         }
-                        return NewMatrix;
+                        return newMatrix;
                     }
                     else
                     {
@@ -78,28 +94,39 @@ namespace Task5_Matrix
             }
 
         }
-        public int[,] SumMatrix(int[,] firstMatrix, int[,] secondMatrix, int m, int n, int m2, int n2)
+        /// <summary>
+        /// Метод сложения двух соразмерных матриц
+        /// </summary>
+        /// <param name="firstMatrix">Первая матрица</param>
+        /// <param name="secondMatrix">Вторая матрица</param>
+        /// <param name="column1">Количество колонок первой матрицы</param>
+        /// <param name="row1">Количество строк первой матрицы</param>
+        /// <param name="column2">Количество колонок второй матрицы</param>
+        /// <param name="row2">Количество строк первой матрицы</param>
+        /// <returns>Возвращает сумму двух матриц</returns>
+        public int[,] SumMatrix(int[,] firstMatrix, int[,] secondMatrix, int column1, int row1, int column2, int row2)
         {
             try
             {
-                if (m == m2 && n == n2)
+                if (column1 == column2 && row1 == row2)  ///Соразмерны ли данные матрицы?
                 {
                     Console.WriteLine("Размерность массивов одинакова");
-                    int[,] SummedMartix = new int[m, n];
-                    for (int i = 0; i < n; i++)
+                    int[,] summedMartix = new int[column1, row1];
+                    for (int i = 0; i < row1; i++)
                     {
-                        for (int j = 0; j < m; j++)
+                        for (int j = 0; j < column1; j++)
                         {
-                            SummedMartix[i, j] = firstMatrix[i, j] + secondMatrix[i, j];
-                            Console.Write("{0}\t", SummedMartix[i, j]);
+                            summedMartix[i, j] = firstMatrix[i, j] + secondMatrix[i, j];
+                            Console.Write("{0}\t", summedMartix[i, j]);
                         }
                         Console.WriteLine();
                     }
 
-                    return SummedMartix;
+                    return summedMartix;
                 }
                 else
                 {
+                    Console.WriteLine("Размерность массивов НЕ позволяет сложение");
                     return null;
                 }
             }
@@ -111,50 +138,81 @@ namespace Task5_Matrix
                 return null;
             }
         }
-
-        public int[,] MultiplicateMatrix(int[,] firstMatrix, int[,] secondMatrix, int m, int n, int m2, int n2)
+        /// <summary>
+        /// Метод для умножения двух ранее созданным матриц, 
+        /// если их размерности подходят для этого
+        /// </summary>
+        /// <param name="firstMatrix">Первая матрица</param>
+        /// <param name="secondMatrix">Вторая матрица</param>
+        /// <param name="column1">Количество колонок первой матрицы</param>
+        /// <param name="row1">Количество строк первой матрицы</param>
+        /// <param name="column2">Количество колонок второй матрицы</param>
+        /// <param name="row2">Количество колонок второй матрицы</param>
+        /// <returns>Возвращает произведение двух матриц</returns>
+        public int[,] MultiplicateMatrix(int[,] firstMatrix, int[,] secondMatrix, int column1, int row1, int column2, int row2)
         {
-           
-            if (m == n2)
+
+            if (column1 == row2)  ///Возможно ли перемножить данные матрицы?
             {
-              
-                int[,] multipledMartix = new int[n, m2];
-                for (int i = 0; i < n2; i++)
+                Console.WriteLine("Размерность массивов позволяет умножение");
+                int[,] result = new int[row1, column2];
+                for (int r = 0; r < row1; ++r)
                 {
-                    for (int j = 0; j < multipledMartix.Length; j++)
+                    for (int c = 0; c < column2; ++c)
                     {
-                        multipledMartix[i, j] = 0;
-                        for (int k = 0; k < m; k++)
-                            multipledMartix[i, j] += firstMatrix[i, k] * secondMatrix[k, j];
-                        Console.Write("{0}\t", multipledMartix[i, j]);
+                        int s = 0;
+                        for (int z = 0; z < column1; ++z)
+                            s += firstMatrix[r, z] * secondMatrix[z, c];
+                        Console.Write(s + "\t");
+                        result[r, c] = s;
+
                     }
                     Console.WriteLine();
+
                 }
-                return multipledMartix;
+
+                return result;
             }
             else
             {
+                Console.WriteLine("Размерность массивов НЕ позволяет умножение");
                 return null;
             }
 
         }
 
     }
+    /// <summary>
+    /// Класс работы с пользователем
+    /// </summary>
     class Input
     {
         private int row;
-        private int column;
+        private int column1;
+        /// <summary>
+        /// Спрашиваем нужно ли сгенерировать новую матрицу
+        /// </summary>
+        /// <returns>Ответ пользователя True/False</returns>
         public bool GetUserInput()
         {
             Console.WriteLine("\n Добавить новую матрицу? (y/n)");
             char answer = Console.ReadKey(true).KeyChar;
             if (answer == 'y')
             {
-                Console.WriteLine("\n Введите количество строк");
-                row = int.Parse(Console.ReadLine());
-                Console.WriteLine("\n Введите количество столбцов");
-                column = int.Parse(Console.ReadLine());
-                return true;
+                try
+                {
+                    Console.WriteLine("\n Введите количество строк");
+                    row = int.Parse(Console.ReadLine());
+                    Console.WriteLine("\n Введите количество столбцов");
+                    column1 = int.Parse(Console.ReadLine());
+                    return true;
+                }
+                catch (Exception ex)
+                {
+
+                    Console.WriteLine(ex.Message);
+                    return false;
+                }
             }
             else
             {
@@ -162,6 +220,11 @@ namespace Task5_Matrix
             }
 
         }
+        /// <summary>
+        /// Спрашиваем у пользователя 
+        /// Складывать ли созданные матрицы
+        /// </summary>
+        /// <returns>Ответ пользователя True/False</returns>
         public bool DoYouWantSum()
         {
             Console.WriteLine("\n Хотите сложить полученные матрицы? (y/n)");
@@ -175,19 +238,41 @@ namespace Task5_Matrix
                 return false;
             }
         }
-        public int M
+        /// <summary>
+        /// Спрашиваем у пользователя 
+        /// Перемножать ли созданные матрицы
+        /// </summary>
+        /// <returns>Ответ пользователя True/False</returns>
+        public bool DoYouWantMult()
+        {
+            Console.WriteLine("\n Хотите перемножить полученные матрицы? (y/n)");
+            char answer = Console.ReadKey(true).KeyChar;
+            if (answer == 'y')
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        /// <summary>
+        /// Свойства для работы с размерностями матрицы
+        /// </summary>
+        public int Row
         {
             get
             {
                 return row;
             }
         }
-        public int N
+        public int Column
         {
             get
             {
-                return column;
+                return column1;
             }
         }
     }
 }
+
