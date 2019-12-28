@@ -12,6 +12,9 @@ namespace Task1_NewtonMethod
     {
         static void Main(string[] args)
         {
+            MainCalculator calculator = new MainCalculator();
+            calculator.NewtonMethd(81,4);
+            Console.ReadKey();
         }
 
 
@@ -22,16 +25,52 @@ namespace Task1_NewtonMethod
     /// </summary>
     class Input
     {
-        public void GetUserInput() 
+        public void GetUserInput()
         {
-            Console.WriteLine("Введите уравнение");
-            var userEquation = Console.ReadLine();
-            Console.WriteLine("Введите необходимую точность");
-            var accuracy = decimal.Parse(Console.ReadLine());
-            var userEquationParsed = Infix.ParseOrThrow(userEquation);
+            try
+            {
+                Console.WriteLine("Введите число");
+                var userValue = decimal.Parse(Console.ReadLine());
+                Console.WriteLine("Введите корень вычисляемого числа");
+                var userRoot = decimal.Parse(Console.ReadLine());
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            } 
+        }
+        public decimal Value { get; }
+        public decimal Root { get; }
+    }
+
+    class MainCalculator
+    {
+        private double x0 = 1;
+        const double approximation = 0.000000000000001;
+
+        public decimal NewtonMethd(double val, double root)
+        {
+            double xk = x0;
+            var delta = x0;
+            var counter = 0;
+
+            while (approximation<delta)
+            {
+                double funcX = ((Math.Pow(xk, root)) - val);
+                double derivativeX = (root * (Math.Pow(xk,root-1)));
+                double Xn = xk - (funcX / derivativeX);
+                delta = Math.Abs(Xn - xk);
+                xk = Xn;
+                Console.WriteLine(Xn);
+                counter++;
+            }
+            return 6;
+            
+
+
         }
         
-        
+    }     
 
-    }
 }
+
