@@ -12,8 +12,18 @@ namespace Task1_NewtonMethod
     {
         static void Main(string[] args)
         {
+
             MainCalculator calculator = new MainCalculator();
-            calculator.NewtonMethd(81,4);
+            Input userInput = new Input();
+
+            userInput.GetUserInput();
+
+            double userValue = userInput.Value;
+            double userRoot = userInput.Root;
+            double myValue = calculator.NewtonMethod(userValue, userRoot);
+            double mathValue = calculator.StandartMethod(userValue, userRoot);
+            calculator.CompareMethods(myValue, mathValue);
+
             Console.ReadKey();
         }
 
@@ -25,30 +35,31 @@ namespace Task1_NewtonMethod
     /// </summary>
     class Input
     {
+        public double Value { get; set; }
+        public double Root { get; set; }
         public void GetUserInput()
         {
             try
             {
                 Console.WriteLine("Введите число");
-                var userValue = decimal.Parse(Console.ReadLine());
+                Value = double.Parse(Console.ReadLine());
                 Console.WriteLine("Введите корень вычисляемого числа");
-                var userRoot = decimal.Parse(Console.ReadLine());
+                Root = double.Parse(Console.ReadLine());
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             } 
         }
-        public decimal Value { get; }
-        public decimal Root { get; }
+        
     }
 
     class MainCalculator
     {
         private double x0 = 1;
-        const double approximation = 0.000000000000001;
+        const double approximation = 0.00000001;
 
-        public decimal NewtonMethd(double val, double root)
+        public double NewtonMethod(double val, double root)
         {
             double xk = x0;
             var delta = x0;
@@ -64,10 +75,20 @@ namespace Task1_NewtonMethod
                 Console.WriteLine(Xn);
                 counter++;
             }
-            return 6;
-            
+            return xk;
+        }
+        public double StandartMethod(double val, double root)
+        {
+            double Xn = Math.Pow(val, (1 / root));
+            return Xn;
+        }
 
-
+        public void CompareMethods(double myMethodResult, double otherMerthodResult)
+        {
+            Console.WriteLine("Вычеслено методом Ньютона: " + myMethodResult);
+            Console.WriteLine("Вычеслено стандартной библиотекой: " + otherMerthodResult);
+            var differenceBetweenMethod = Math.Abs(myMethodResult - otherMerthodResult);
+            Console.WriteLine("Разница между вычисленными значениями: " + differenceBetweenMethod);
         }
         
     }     
