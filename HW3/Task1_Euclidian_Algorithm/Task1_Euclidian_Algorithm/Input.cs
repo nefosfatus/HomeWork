@@ -19,7 +19,7 @@ namespace Task1_Euclidian_Algorithm
         {
             try
             {
-                Console.WriteLine("Введите число");
+                Console.WriteLine("\n Введите число");
                 var answer = int.Parse(Console.ReadLine());
                 return answer;
             }
@@ -62,6 +62,20 @@ namespace Task1_Euclidian_Algorithm
                 return 0;
             }
 
+        }
+
+        public bool AskStainMethod()
+        {
+            Console.WriteLine("Хотите вычислить НОД двух чисел методом Стейна? (y/n)");
+            
+            if (Console.ReadKey().Key == ConsoleKey.Y)
+            {
+               return true;            
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
