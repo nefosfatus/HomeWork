@@ -14,6 +14,9 @@ namespace Task1_Euclidian_Algorithm
             Calculator calculator = new Calculator();
             Input input = new Input();
 
+
+            var asd = calculator.GetGCDbySteinAlgorithm(116150,232704);
+            Console.WriteLine(asd);
             //Initialize user input
             int amountOfNumbers = input.GetUserInput();
 
@@ -50,6 +53,10 @@ namespace Task1_Euclidian_Algorithm
                 return 0;
             }
         }
+        /// <summary>
+        /// Get count of numbers for GCD
+        /// </summary>
+        /// <returns>count of numbers for GCD</returns>
         public int GetUserInput() 
         {
             try
@@ -81,11 +88,19 @@ namespace Task1_Euclidian_Algorithm
         }
         
     }
-
+    /// <summary>
+    /// Class for computing 
+    /// </summary>
     class Calculator
     {
         Input calculatorInput = new Input();
         public int cache { get; set; }
+        /// <summary>
+        /// Main method calculates GCD according to the Euclidean algorithm
+        /// </summary>
+        /// <param name="firstNumber">First number</param>
+        /// <param name="secondNumber">Second number </param>
+        /// <returns>GCD</returns>
         public int GetGreatestCommonDivisor(int firstNumber, int secondNumber)
         {
             try
@@ -107,7 +122,9 @@ namespace Task1_Euclidian_Algorithm
                 return 0;
             }
         }
-
+        /// <summary>
+        /// Overload for main method for 3 numbers
+        /// </summary>
         public int GetGreatestCommonDivisor(int firstNumber, int secondNumber, int thirdNumber)
         {
 
@@ -116,7 +133,9 @@ namespace Task1_Euclidian_Algorithm
  
             return GCD2;
         }
-
+        /// <summary>
+        /// Overload for main method for 4 numbers
+        /// </summary>
         public int GetGreatestCommonDivisor(int firstNumber, int secondNumber, int thirdNumber, int fourthNumber)
         {
 
@@ -126,7 +145,9 @@ namespace Task1_Euclidian_Algorithm
 
             return GCD3;
         }
-
+        /// <summary>
+        /// Overload for main method for 5 numbers
+        /// </summary>
         public int GetGreatestCommonDivisor(int firstNumber, int secondNumber, int thirdNumber, int fourthNumber, int fifthNumber)
         {
 
@@ -137,6 +158,12 @@ namespace Task1_Euclidian_Algorithm
 
             return GCD4;
         }
+
+        /// <summary>
+        /// Method with choose which overload to use
+        /// </summary>
+        /// <param name="amountOfNumbers">Count of numbers which user sended</param>
+        /// <returns>GCD</returns>
         public int ChooseOverload(int amountOfNumbers)
         {
             if (amountOfNumbers == 1)
@@ -186,6 +213,50 @@ namespace Task1_Euclidian_Algorithm
             {
                 return 0;
             }
+        }
+        public int GetGCDbySteinAlgorithm(int firstInput, int secondInput)
+        {
+            if (firstInput == secondInput)
+            {
+                return firstInput;
+            }
+            if (firstInput == 0)
+            {
+                return secondInput;
+            }
+            if (secondInput == 0)
+            {
+                return firstInput;
+            }
+            if(firstInput==1 || secondInput == 1)
+            {
+                return 1;
+            }
+            if(((firstInput&1)==0)&&((secondInput & 1) == 0))
+            {
+                var answer = 2 * GetGCDbySteinAlgorithm(firstInput / 2, secondInput / 2);
+                return answer;
+            }
+            if (((firstInput & 1) == 0) && ((secondInput & 1) != 0))
+            {
+                var answer = GetGCDbySteinAlgorithm(firstInput / 2, secondInput);
+                return answer;
+            }
+            if (((firstInput & 1) != 0) && ((secondInput & 1) == 0))
+            {
+                var answer = GetGCDbySteinAlgorithm(firstInput, secondInput/2);
+                return answer;
+            }
+            if (((firstInput & 1) != 0) && ((secondInput & 1) != 0))
+            {
+                var answer = GetGCDbySteinAlgorithm(secondInput, Math.Abs(firstInput-secondInput));
+                return answer;
+            }
+            else
+            {
+                return 0;
+            }
+
         }
 
     }
