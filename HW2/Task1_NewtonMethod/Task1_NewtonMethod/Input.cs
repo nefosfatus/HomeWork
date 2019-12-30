@@ -25,9 +25,9 @@ namespace Task1_NewtonMethod
                 Console.WriteLine("Введите корень вычисляемого числа");
                 Root = double.Parse(Console.ReadLine());
             }
-            catch (Exception ex)
+            catch (FormatException)
             {
-                Console.WriteLine(ex.Message);
+                throw new FormatException("Введите корректное число");
             }
         }
     }

@@ -9,7 +9,7 @@ namespace Task2_ConvertToBinary
     /// <summary>
     /// Class for convert to binary string 
     /// </summary>
-    class Converter
+    internal class Converter
     {
         /// <summary>
         /// Convert by library method
@@ -28,11 +28,11 @@ namespace Task2_ConvertToBinary
         /// <returns>binary string</returns>
         public string ConvertUserInputByAlgorythm(uint userInputValue)
         {
-            string binaryString = "";
-            uint store;
+            string binaryString = string.Empty;
+            
             while (userInputValue > 0)
             {
-                store = userInputValue % 2;
+                uint store = userInputValue % 2;
                 userInputValue /= 2;
                 binaryString = store.ToString() + binaryString;
 

@@ -9,11 +9,11 @@ namespace Task1_NewtonMethod
     /// <summary>
     /// Class for calculations
     /// </summary>
-    class MainCalculator
+    internal class MainCalculator
     {
         //Start parameters
-        private double x0 = 1;
-        const double approximation = 0.00000001;
+        private double _initialAssumption = 1;
+        private const double approximation = 0.00000001;
         /// <summary>
         /// For calculation by the Newton Method
         /// </summary>
@@ -22,8 +22,8 @@ namespace Task1_NewtonMethod
         /// <returns>Calculated Value</returns>
         public double NewtonMethod(double val, double root)
         {
-            double previosXn = x0;
-            var delta = x0;
+            double previosXn = _initialAssumption;
+            var delta = _initialAssumption;
 
             try
             {
@@ -40,8 +40,7 @@ namespace Task1_NewtonMethod
             catch (Exception ex)
             {
 
-                Console.WriteLine(ex.Message);
-                return 0;
+                throw new Exception(ex.Message);
             }
         }
 
@@ -61,8 +60,7 @@ namespace Task1_NewtonMethod
             catch (Exception ex)
             {
 
-                Console.WriteLine(ex.Message);
-                return 0;
+                throw new Exception(ex.Message);
             }
         }
         /// <summary>
