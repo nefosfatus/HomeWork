@@ -9,7 +9,7 @@ namespace Task1_Euclidian_Algorithm
     /// <summary>
     /// Class for work with user input
     /// </summary>
-    class Input
+    public class Input
     {
         /// <summary>
         /// Asks for a number from the user
@@ -25,9 +25,7 @@ namespace Task1_Euclidian_Algorithm
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Пожалуйста введите целое число");
-                Console.WriteLine(ex.Message);
-                return 0;
+                throw new Exception(ex.Message);
             }
         }
         /// <summary>
@@ -57,9 +55,7 @@ namespace Task1_Euclidian_Algorithm
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Пожалуйста, введите целое число");
-                Console.WriteLine(ex.Message);
-                return 0;
+                throw new Exception(ex.Message);
             }
 
         }
