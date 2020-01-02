@@ -15,8 +15,8 @@ namespace Task1_Euclidian_Algorithm
         public class Benchmark : IDisposable
         {
             //initiaization
-            private readonly Stopwatch timer = new Stopwatch();
-            private readonly string benchmarkName;
+            private readonly Stopwatch _timer = new Stopwatch();
+            private readonly string _benchmarkName;
 
             /// <summary>
             /// start method
@@ -24,16 +24,16 @@ namespace Task1_Euclidian_Algorithm
             /// <param name="benchmarkName">Строка описания</param>
             public Benchmark(string benchmarkName)
             {
-                this.benchmarkName = benchmarkName;
-                timer.Start();
+                this._benchmarkName = benchmarkName;
+                _timer.Start();
             }
             /// <summary>
             /// stop method
             /// </summary>
             public void Dispose()
             {
-                timer.Stop();
-                Console.WriteLine($"{benchmarkName} {timer.Elapsed}");
+                _timer.Stop();
+                Console.WriteLine($"{_benchmarkName} {_timer.Elapsed}");
             }
         }
     }
