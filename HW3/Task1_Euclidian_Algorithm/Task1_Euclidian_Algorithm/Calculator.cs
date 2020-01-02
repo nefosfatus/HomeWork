@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Task1_Euclidian_Algorithm.Time;
 
 namespace Task1_Euclidian_Algorithm
 {
@@ -23,17 +24,20 @@ namespace Task1_Euclidian_Algorithm
         {
             try
             {
-                //Compute greater number 
-                int greaterNumber = Math.Max(firstNumber, secondNumber);
-                int smallerNumber = Math.Min(firstNumber, secondNumber);
-
-                while (smallerNumber != 0)
+                using (var bench = new Benchmark("Время выполнения вычисления по алгоритму Ньютона: ")) //Execution time
                 {
-                    cache = greaterNumber % smallerNumber;
-                    greaterNumber = smallerNumber;
-                    smallerNumber = cache;
+                    //Compute greater number 
+                    int greaterNumber = Math.Max(firstNumber, secondNumber);
+                    int smallerNumber = Math.Min(firstNumber, secondNumber);
+
+                    while (smallerNumber != 0)
+                    {
+                        cache = greaterNumber % smallerNumber;
+                        greaterNumber = smallerNumber;
+                        smallerNumber = cache;
+                    }
+                    return Math.Abs(greaterNumber);
                 }
-                return Math.Abs(greaterNumber);
 
             }
             catch (Exception ex)
@@ -141,43 +145,45 @@ namespace Task1_Euclidian_Algorithm
         /// <returns>GCD</returns>
         public int GetGCDbySteinAlgorithm(int firstInput, int secondInput)
         {
-            if (firstInput == secondInput)  
+            using (var bench = new Benchmark("Время выполнения вычисления по алгоритму Стейна: ")) //Execution time
             {
-                return firstInput;
+                if (firstInput == secondInput)
+                {
+                    return firstInput;
+                }
+                if (firstInput == 0 || secondInput == 0)
+                {
+                    return secondInput;
+                }
+                if (firstInput == 1 || secondInput == 1)
+                {
+                    return 1;
+                }
+                if (((firstInput & 1) == 0) && ((secondInput & 1) == 0)) //if both even
+                {
+                    var answer = 2 * GetGCDbySteinAlgorithm(firstInput / 2, secondInput / 2);
+                    return answer;
+                }
+                if (((firstInput & 1) == 0) && ((secondInput & 1) != 0))    //if only first even
+                {
+                    var answer = GetGCDbySteinAlgorithm(firstInput / 2, secondInput);
+                    return answer;
+                }
+                if (((firstInput & 1) != 0) && ((secondInput & 1) == 0))  //if only second even
+                {
+                    var answer = GetGCDbySteinAlgorithm(firstInput, secondInput / 2);
+                    return answer;
+                }
+                if (((firstInput & 1) != 0) && ((secondInput & 1) != 0))       //if both odd
+                {
+                    var answer = GetGCDbySteinAlgorithm(secondInput, Math.Abs(firstInput - secondInput));
+                    return answer;
+                }
+                else
+                {
+                    return 0;
+                }
             }
-            if (firstInput == 0 || secondInput == 0)
-            {
-                return secondInput;
-            }
-            if (firstInput == 1 || secondInput == 1)
-            {
-                return 1;
-            }
-            if (((firstInput & 1) == 0) && ((secondInput & 1) == 0)) //if both even
-            {
-                var answer = 2 * GetGCDbySteinAlgorithm(firstInput / 2, secondInput / 2);
-                return answer;
-            }
-            if (((firstInput & 1) == 0) && ((secondInput & 1) != 0))    //if only first even
-            {
-                var answer = GetGCDbySteinAlgorithm(firstInput / 2, secondInput);
-                return answer;
-            }
-            if (((firstInput & 1) != 0) && ((secondInput & 1) == 0))  //if only second even
-            {
-                var answer = GetGCDbySteinAlgorithm(firstInput, secondInput / 2);
-                return answer;
-            }
-            if (((firstInput & 1) != 0) && ((secondInput & 1) != 0))       //if both odd
-            {
-                var answer = GetGCDbySteinAlgorithm(secondInput, Math.Abs(firstInput - secondInput));
-                return answer;
-            }
-            else
-            {
-                return 0;
-            }
-
         }
     }
 }
