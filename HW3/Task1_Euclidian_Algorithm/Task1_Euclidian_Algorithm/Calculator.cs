@@ -13,7 +13,7 @@ namespace Task1_Euclidian_Algorithm
     public class Calculator
     {
         Input calculatorInput = new Input();
-        public int cache { get; set; }
+        private int cache { get; set; }
         /// <summary>
         /// Main method calculates GCD according to the Euclidean algorithm
         /// </summary>
@@ -62,9 +62,8 @@ namespace Task1_Euclidian_Algorithm
         public int GetGreatestCommonDivisor(int firstNumber, int secondNumber, int thirdNumber, int fourthNumber)
         {
 
-            var GCD = GetGreatestCommonDivisor(firstNumber, secondNumber);
-            var GCD2 = GetGreatestCommonDivisor(thirdNumber, GCD);
-            var GCD3 = GetGreatestCommonDivisor(fourthNumber, GCD2);
+            var GCD = GetGreatestCommonDivisor(firstNumber, secondNumber, thirdNumber);
+            var GCD3 = GetGreatestCommonDivisor(fourthNumber, GCD);
 
             return GCD3;
         }
@@ -74,10 +73,8 @@ namespace Task1_Euclidian_Algorithm
         public int GetGreatestCommonDivisor(int firstNumber, int secondNumber, int thirdNumber, int fourthNumber, int fifthNumber)
         {
 
-            var GCD = GetGreatestCommonDivisor(firstNumber, secondNumber);
-            var GCD2 = GetGreatestCommonDivisor(thirdNumber, GCD);
-            var GCD3 = GetGreatestCommonDivisor(fourthNumber, GCD2);
-            var GCD4 = GetGreatestCommonDivisor(fifthNumber, GCD3);
+            var GCD = GetGreatestCommonDivisor(firstNumber, secondNumber, thirdNumber, fourthNumber);
+            var GCD4 = GetGreatestCommonDivisor(fifthNumber, GCD);
 
             return GCD4;
         }
@@ -94,7 +91,7 @@ namespace Task1_Euclidian_Algorithm
                 var GCD = calculatorInput.AskNumber();
                 return GCD;
             }
-            else if (amountOfNumbers == 2)
+            if (amountOfNumbers == 2)
             {
                 var firstInput = calculatorInput.AskNumber();
                 var secondInput = calculatorInput.AskNumber();
@@ -102,7 +99,7 @@ namespace Task1_Euclidian_Algorithm
 
                 return GCD;
             }
-            else if (amountOfNumbers == 3)
+            if (amountOfNumbers == 3)
             {
                 var firstInput = calculatorInput.AskNumber();
                 var secondInput = calculatorInput.AskNumber();
@@ -111,7 +108,7 @@ namespace Task1_Euclidian_Algorithm
 
                 return GCD;
             }
-            else if (amountOfNumbers == 4)
+            if (amountOfNumbers == 4)
             {
                 var firstInput = calculatorInput.AskNumber();
                 var secondInput = calculatorInput.AskNumber();
@@ -121,7 +118,7 @@ namespace Task1_Euclidian_Algorithm
 
                 return GCD;
             }
-            else if (amountOfNumbers == 5)
+            if (amountOfNumbers == 5)
             {
                 var firstInput = calculatorInput.AskNumber();
                 var secondInput = calculatorInput.AskNumber();
@@ -132,10 +129,8 @@ namespace Task1_Euclidian_Algorithm
 
                 return GCD;
             }
-            else
-            {
-                return 0;
-            }
+            return 0;
+            
         }
         /// <summary>
         /// Main method calculates GCD according to the Stain algorithm
@@ -179,10 +174,7 @@ namespace Task1_Euclidian_Algorithm
                     var answer = GetGCDbySteinAlgorithm(secondInput, Math.Abs(firstInput - secondInput));
                     return answer;
                 }
-                else
-                {
-                    return 0;
-                }
+                return 0;
             }
         }
     }
