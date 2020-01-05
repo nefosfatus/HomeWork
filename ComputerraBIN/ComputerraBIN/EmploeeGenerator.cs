@@ -10,11 +10,11 @@ namespace ComputerraBIN
     {
 
         private Random random = new Random();
-        public List<Emploee> GenerateEmploees()
+        public List<Emploee> GenerateEmploees(int workersCount, int bossesCount, int bigBossesCount, int minCoordinate, int maxCoordinate)
         {
-            List<Emploee> emploees = CreateEmploees(5, 2, 1);
+            List<Emploee> emploees = CreateEmploees(workersCount, bossesCount, bigBossesCount);
             emploees = GiveSalary(emploees, 1000, 3000, 5000, 10000, 20000, 50000);
-            emploees = GivePosition(emploees, 2, 15, 2, 15);
+            emploees = GivePosition(emploees, minCoordinate, maxCoordinate, minCoordinate, maxCoordinate);
             emploees = GiveName(emploees);
             emploees = GiveMood(emploees);
             emploees = GivePost(emploees);
@@ -73,7 +73,7 @@ namespace ComputerraBIN
                     };
                     if (usedPoints.Contains(emploee.Position))
                     {
-                        break;
+                        continue;
                     }
                     else
                     {
@@ -141,11 +141,11 @@ namespace ComputerraBIN
                 }
                 if (emploee is Boss)
                 {
-                    emploee.Post = "Taz'dingo";
+                    emploee.Phrase = "Taz'dingo";
                 }
                 if (emploee is BigBoss)
                 {
-                    emploee.Post = "Lok-narash!";
+                    emploee.Phrase = "Lok-narash!";
                 }
             }
             return emploees;

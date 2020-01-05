@@ -11,9 +11,16 @@ namespace ComputerraBIN
         
         static void Main(string[] args)
         {
-
+            const int maximum = 6;
             EmploeeGenerator emploeeGenerator = new EmploeeGenerator();
-            List<Emploee> emploees = emploeeGenerator.GenerateEmploees();
+            Field field = new Field();
+            Engine engine = new Engine();
+            List<Emploee> emploees = emploeeGenerator.GenerateEmploees(5,2,1,2, maximum);
+            
+            field.BuildWall(maximum, maximum);
+            field.DrawPositions(emploees);
+            engine.StartWork(15,emploees, maximum, maximum, maximum, maximum);
+            
           
 
             Console.ReadKey();

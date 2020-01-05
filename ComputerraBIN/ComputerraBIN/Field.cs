@@ -28,5 +28,30 @@ namespace ComputerraBIN
                 Console.Write("#");
             }
         }
+        public void DrawPositions(List<Emploee> emploees)
+        {
+            foreach(var emploee in emploees)
+            {
+                if(emploee is Worker)
+                {
+                    Console.ForegroundColor = ConsoleColor.Gray;
+                    Console.SetCursorPosition(emploee.Position.CoordinateX, emploee.Position.CoordinateY);
+                    Console.Write("W");
+                }
+                if (emploee is Boss)
+                {
+                    Console.ForegroundColor = ConsoleColor.DarkBlue;
+                    Console.SetCursorPosition(emploee.Position.CoordinateX, emploee.Position.CoordinateY);
+                    Console.Write("W");
+                }
+                if (emploee is BigBoss)
+                {
+                    Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    Console.SetCursorPosition(emploee.Position.CoordinateX, emploee.Position.CoordinateY);
+                    Console.Write("W");
+                }
+
+            }
+        }
     }
 }
