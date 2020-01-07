@@ -45,66 +45,32 @@ namespace ComputerraBIN
             bool isFit = false;
             while (isFit == false)
             {
-                if (currentPosition.CoordinateX <= minXCoordinate || currentPosition.CoordinateX >= maxXCoordinate) //if out field by X
-                {
-                    if (currentPosition.CoordinateY > minYCoordinate || currentPosition.CoordinateY < maxYCoordinate) //if doesnt out field by Y
-                    {
-                        Point newPosition = SetPosition(currentPosition, maxXCoordinate, maxYCoordinate, 0, -1);
-                        isFit = true;
-                        return newPosition;
-                    }
-                    if (currentPosition.CoordinateY <= minYCoordinate || currentPosition.CoordinateY >= maxYCoordinate) //if  out field by Y
-                    {
-                        Point newPosition = SetPosition(currentPosition, maxXCoordinate, maxYCoordinate, 0, 0);
-                        isFit = true;
-                        return newPosition;
-                    }
 
-                }
-                if (currentPosition.CoordinateY <= minYCoordinate || currentPosition.CoordinateY >= maxYCoordinate ) //if outfield by Y
-                {
-                    if (currentPosition.CoordinateX > minXCoordinate || currentPosition.CoordinateX < maxXCoordinate) //if doesnt out field by X
-                    {
-                        Point newPosition = SetPosition(currentPosition, maxXCoordinate, maxYCoordinate, -1, 0);
-                        isFit = true;
-                        return newPosition;
-                    }
-                    if (currentPosition.CoordinateX <= minXCoordinate || currentPosition.CoordinateX >= maxXCoordinate) //if  out field by X
-                    {
-                        Point newPosition = SetPosition(currentPosition, maxXCoordinate, maxYCoordinate, 0, 0);
-                        isFit = true;
-                        return newPosition;
-                    }
-                }
-
-                if (currentPosition.CoordinateX > minXCoordinate && currentPosition.CoordinateX < maxXCoordinate
-                    && currentPosition.CoordinateY > minYCoordinate  && currentPosition.CoordinateY < maxYCoordinate)
-                {
-                    Point newPosition = SetPosition(currentPosition, maxXCoordinate, maxYCoordinate, 0, 0);
-                    isFit = true;
-                    return newPosition;
-
-                }
-
+                currentPosition.CoordinateX = SetPosition(currentPosition.CoordinateX, minXCoordinate, maxXCoordinate);
+                currentPosition.CoordinateY = SetPosition(currentPosition.CoordinateY, minYCoordinate, maxYCoordinate);
 
             }
             return currentPosition;
 
         }
 
-        public Point SetPosition(Point currentPosition, int maxXCoordinate, int maxYCoordinate,
-            int minX,int minY)
+        public int SetPosition(int coordinate, int minCoordinate, int maxCoordinate)
         {
-            Point newPosition = new Point
+
+            if (coordinate  < maxCoordinate && coordinate  > minCoordinate)
             {
-                CoordinateX = currentPosition.CoordinateX + random.Next(minX, 1),
-                CoordinateY = currentPosition.CoordinateY + random.Next(minY, 1)
-            };
-            if (newPosition.CoordinateX < maxXCoordinate && newPosition.CoordinateY < maxYCoordinate)
-            {
-                return newPosition;
+                coordinate  += random.Next(-1, 2);
             }
-            return currentPosition;
+            if (coordinate  >= maxCoordinate)
+            {
+                coordinate  += random.Next(-1,0);
+            }
+            if (coordinate  <= minCoordinate)
+            {
+                coordinate  += random.Next(0, 2);
+            }
+
+            return coordinate;
         }
         //get list and timer
 
