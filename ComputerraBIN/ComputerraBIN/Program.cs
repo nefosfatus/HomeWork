@@ -11,7 +11,7 @@ namespace ComputerraBIN
         
         static void Main(string[] args)
         {
-            const int maximum = 6;
+            const int maximum = 30;
             EmploeeGenerator emploeeGenerator = new EmploeeGenerator();
             Field field = new Field();
             Engine engine = new Engine();

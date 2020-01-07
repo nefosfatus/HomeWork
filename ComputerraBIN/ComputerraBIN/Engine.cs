@@ -23,8 +23,9 @@ namespace ComputerraBIN
                     List<Emploee> currentEmploe = new List<Emploee> { emploee };
                     field.DrawPositions(currentEmploe);
                     currentEmploe.Clear();
+                    Task.Delay(2500).Wait();
                 }
-                Task.Delay(500);
+                
                 timeCycle--;
             }
             return true;
@@ -42,16 +43,9 @@ namespace ComputerraBIN
         }
         public Point GetNewPosition(Point currentPosition, int minXCoordinate, int maxXCoordinate, int minYCoordinate, int maxYCoordinate)
         {
-            bool isFit = false;
-            while (isFit == false)
-            {
-
-                currentPosition.CoordinateX = SetPosition(currentPosition.CoordinateX, minXCoordinate, maxXCoordinate);
-                currentPosition.CoordinateY = SetPosition(currentPosition.CoordinateY, minYCoordinate, maxYCoordinate);
-
-            }
+            currentPosition.CoordinateX = SetPosition(currentPosition.CoordinateX, minXCoordinate, maxXCoordinate);
+            currentPosition.CoordinateY = SetPosition(currentPosition.CoordinateY, minYCoordinate, maxYCoordinate);
             return currentPosition;
-
         }
 
         public int SetPosition(int coordinate, int minCoordinate, int maxCoordinate)
@@ -72,16 +66,6 @@ namespace ComputerraBIN
 
             return coordinate;
         }
-        //get list and timer
 
-        //draw start picture 
-
-        //generate new coordinate 
-
-        //if there is item iteract with if not take that place
-
-        //draw item on new place 
-
-        //clear old place 
     }
 }

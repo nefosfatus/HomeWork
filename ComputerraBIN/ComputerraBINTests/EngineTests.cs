@@ -36,14 +36,13 @@ namespace ComputerraBIN.Tests
             Engine engine = new Engine();
             Point point = new Point() { CoordinateX = 28, CoordinateY =28  };
             int minX = 2;
-            int maxX = 3;
+            int maxX = 30;
             int minY = 2;
-            int maxY = 3;
+            int maxY = 30;
             int cycle = 1000;
             while (cycle != 0)
             {
                 point = engine.GetNewPosition(point, minX, maxX, minY, maxY);
-
                 cycle--;
             }
             Assert.AreEqual(point.CoordinateX, 2);
