@@ -16,9 +16,23 @@ namespace ComputerraBIN
             Field field = new Field();
             Engine engine = new Engine();
             List<Emploee> emploees = emploeeGenerator.GenerateEmploees(5,2,1,2, maximum);
+            List<Work> works = emploeeGenerator.GenereteWork(4, 2, maximum);
+            List<Customer> customers = emploeeGenerator.GenereteCustomer(1, 2, maximum);
             
             field.BuildWall(maximum, maximum);
-            field.DrawPositions(emploees);
+            foreach(var item in emploees)
+            {
+                field.DrawPositions(item);
+            }
+            foreach (var item in works)
+            {
+                field.DrawPositions(item);
+            }
+            foreach (var item in customers)
+            {
+                field.DrawPositions(item);
+            }
+
             engine.SayHello(emploees);
             engine.StartWork(15,emploees, 2, maximum, 2, maximum);
             

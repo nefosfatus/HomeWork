@@ -12,6 +12,7 @@ namespace ComputerraBIN
     }
     public interface IMoveable
     {
+        Point Position { get; set; }
         void Move(Point p);
         bool IsAlive();
     }

@@ -28,30 +28,40 @@ namespace ComputerraBIN
                 Console.Write("#");
             }
         }
-        public void DrawPositions(List<Emploee> emploees)
+        public void DrawPositions(IMoveable emploee)
         {
-            foreach(var emploee in emploees)
+            
+            if(emploee is Worker)
             {
-                if(emploee is Worker)
-                {
-                    Console.ForegroundColor = ConsoleColor.Gray;
-                    Console.SetCursorPosition(emploee.Position.CoordinateX, emploee.Position.CoordinateY);
-                    Console.Write("W");
-                }
-                if (emploee is Boss)
-                {
-                    Console.ForegroundColor = ConsoleColor.DarkBlue;
-                    Console.SetCursorPosition(emploee.Position.CoordinateX, emploee.Position.CoordinateY);
-                    Console.Write("W");
-                }
-                if (emploee is BigBoss)
-                {
-                    Console.ForegroundColor = ConsoleColor.DarkYellow;
-                    Console.SetCursorPosition(emploee.Position.CoordinateX, emploee.Position.CoordinateY);
-                    Console.Write("W");
-                }
-
+                Console.ForegroundColor = ConsoleColor.Gray;
+                Console.SetCursorPosition(emploee.Position.CoordinateX, emploee.Position.CoordinateY);
+                Console.Write("W");
             }
+            if (emploee is Boss)
+            {
+                Console.ForegroundColor = ConsoleColor.DarkBlue;
+                Console.SetCursorPosition(emploee.Position.CoordinateX, emploee.Position.CoordinateY);
+                Console.Write("W");
+            }
+            if (emploee is BigBoss)
+            {
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                Console.SetCursorPosition(emploee.Position.CoordinateX, emploee.Position.CoordinateY);
+                Console.Write("W");
+            }
+            if (emploee is Customer)
+            {
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.SetCursorPosition(emploee.Position.CoordinateX, emploee.Position.CoordinateY);
+                Console.Write("C");
+            }
+            if (emploee is Work)
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.SetCursorPosition(emploee.Position.CoordinateX, emploee.Position.CoordinateY);
+                Console.Write("$");
+            }
+
         }
 
         public void ClearCurrentConsoleLine()

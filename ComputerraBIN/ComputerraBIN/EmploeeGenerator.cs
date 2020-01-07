@@ -9,17 +9,51 @@ namespace ComputerraBIN
     public class EmploeeGenerator
     {
 
-        private Random random = new Random();
+        private readonly Random random = new Random();
         public List<Emploee> GenerateEmploees(int workersCount, int bossesCount, int bigBossesCount, int minCoordinate, int maxCoordinate)
         {
             List<Emploee> emploees = CreateEmploees(workersCount, bossesCount, bigBossesCount);
             emploees = GiveSalary(emploees, 1000, 3000, 5000, 10000, 20000, 50000);
-            emploees = GivePosition(emploees, minCoordinate, maxCoordinate, minCoordinate, maxCoordinate);
+            
             emploees = GiveName(emploees);
             emploees = GiveMood(emploees);
             emploees = GivePost(emploees);
             emploees = GivePhrase(emploees);
+            foreach(var emploee in emploees)
+            {
+                emploee.Position = GivePosition(emploee.Position, minCoordinate, maxCoordinate, minCoordinate, maxCoordinate);
+            }
             return emploees;
+        }
+        public List<Work> GenereteWork(int worksCount, int minCoordinate, int maxCoordinate)
+        {
+            List<Work> works = new List<Work>();
+            while (worksCount != 0)
+            {
+                Work work = new Work();
+                works.Add(work);
+                worksCount--;
+            }
+            foreach (var work in works)
+            {
+                work.Position = GivePosition(work.Position, minCoordinate, maxCoordinate, minCoordinate, maxCoordinate);
+            }
+            return works;
+        }
+        public List<Customer> GenereteCustomer(int customersCount, int minCoordinate, int maxCoordinate)
+        {
+            List<Customer> customers = new List<Customer>();
+            while (customersCount != 0)
+            {
+                Customer customer = new Customer();
+                customers.Add(customer);
+                customersCount--;
+            }
+            foreach (var customer in customers)
+            {
+                customer.Position = GivePosition(customer.Position, minCoordinate, maxCoordinate, minCoordinate, maxCoordinate);
+            }
+            return customers;
         }
         public List<Emploee> CreateEmploees(int workersCount, int bossesCount, int bigBossesCount)
         {
@@ -58,33 +92,30 @@ namespace ComputerraBIN
             return emploees;
         }
 
-        public List<Emploee> GivePosition(List<Emploee> emploees, int minXCoordinate, int maxXCoordinate, int minYCoordinate, int maxYCoordinate)
+        public Point GivePosition(Point point, int minXCoordinate, int maxXCoordinate, int minYCoordinate, int maxYCoordinate)
         {
             List<Point> usedPoints = new List<Point>();
-            foreach (var emploee in emploees)
+            
+            bool isUnic = false;
+            while (isUnic == false)
             {
-                bool isUnic = false;
-                while (isUnic == false)
+                point = new Point
                 {
-                    emploee.Position = new Point
-                    {
-                        CoordinateX = random.Next(minXCoordinate, maxXCoordinate),
-                        CoordinateY = random.Next(minYCoordinate, maxYCoordinate)
-                    };
-                    if (usedPoints.Contains(emploee.Position))
-                    {
-                        continue;
-                    }
-                    else
-                    {
-                        isUnic = true;
-                        usedPoints.Add(emploee.Position);
-                    }
+                    CoordinateX = random.Next(minXCoordinate, maxXCoordinate),
+                    CoordinateY = random.Next(minYCoordinate, maxYCoordinate)
+                };
+                if (usedPoints.Contains(point))
+                {
+                    continue;
+                }
+                else
+                {
+                    isUnic = true;
+                    usedPoints.Add(point);
                 }
             }
-            return emploees;
+            return point;
         }
-
         public List<Emploee> GiveMood(List<Emploee> emploees)
         {
             foreach (var emploee in emploees)
@@ -150,5 +181,7 @@ namespace ComputerraBIN
             }
             return emploees;
         }
+       
+        
     }
 }

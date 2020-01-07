@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace ComputerraBIN
 {
-    class Customer : IManage
+    public class Customer : IManage, IMoveable
     {
+        public Point Position { get; set; }
+
         Random rnd = new Random();
         public void Manage(IManagable imngbl)
         {
@@ -24,6 +26,20 @@ namespace ComputerraBIN
                 }
             };
             return work;
+        }
+
+        public void Move(Point p)
+        {
+            Position = new Point()
+            {
+                CoordinateX = p.CoordinateX,
+                CoordinateY = p.CoordinateY
+            };
+        }
+
+        public bool IsAlive()
+        {
+            return false;
         }
     }
 }

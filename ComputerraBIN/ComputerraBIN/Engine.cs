@@ -8,29 +8,38 @@ namespace ComputerraBIN
 {
     public class Engine
     {
-        Random random = new Random();
-        Field field = new Field();
-        public bool StartWork(int timeCycle, List<Emploee> emploees,int minXCoordinate, int maxXCoordinate,int minYCoordiate, int maxYCoordinate)
+        readonly Random random = new Random();
+        readonly Field field = new Field();
+        public bool StartWork(int timeCycle, List<Emploee> emploees,List<Work> works,List<Customer> customers,int minXCoordinate, int maxXCoordinate,int minYCoordiate, int maxYCoordinate)
         {
             while (timeCycle != 0)
             {
                 foreach(var emploee in emploees)
                 {
                     Point newPosition = GetNewPosition(emploee.Position, minXCoordinate, maxXCoordinate,minYCoordiate,maxYCoordinate);
-                    Emploee placeholder = CheckIt(emploees, newPosition);
+                    IMoveable placeholder = CheckIt(emploees,works,customers, newPosition);
                     if (placeholder == null)
                     {
                         ClearCell(emploee.Position);
                         emploee.Move(newPosition);
-                        List<Emploee> currentEmploe = new List<Emploee> { emploee };
-                        field.DrawPositions(currentEmploe);
-                        currentEmploe.Clear();
-                        
+                        field.DrawPositions(emploee);                        
                     }
-                    else
+                    if(emploee is Worker)
                     {
-                        emploee.Talk(placeholder);
+                        if ((placeholder is Boss) || (placeholder is BigBoss) || (placeholder is Customer))
+                            emploee.Talk((Emploee)placeholder);
+                        if(placeholder is Work)
+                        {
+                            Point WorkNewPosition = GetNewPosition(placeholder.Position, minXCoordinate, maxXCoordinate, minYCoordiate, maxYCoordinate);
+                            IMoveable workplaceholder = CheckIt(emploees, works, customers, newPosition);
+                            if (workplaceholder == null)
+                                placeholder.Move(WorkNewPosition);
+                        }
+                            
                     }
+                    
+                        
+                    
                     Task.Delay(1000).Wait();
                 }
                 
@@ -39,10 +48,18 @@ namespace ComputerraBIN
             return true;
         }
         
-        public Emploee CheckIt(List<Emploee> emploees, Point newPosition)
+        public IMoveable CheckIt(List<Emploee> emploees,List<Work> works,List<Customer> customers, Point newPosition)
         {
-            Emploee placeholder = emploees.Where(s => s.Position == newPosition)?.FirstOrDefault();
-            return placeholder;
+            Emploee emploee = emploees.Where(s => s.Position == newPosition)?.FirstOrDefault();
+            Work work = works.Where(s => s.Position == newPosition)?.FirstOrDefault();
+            Customer customer = customers.Where(s => s.Position == newPosition)?.FirstOrDefault();
+            if (emploee != null)
+                return emploee;
+            if (work != null)
+                return work;
+            if (customer != null)
+                return customer;
+            return null;
         }
         public void ClearCell(Point point)
         {

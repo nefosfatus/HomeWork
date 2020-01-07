@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ComputerraBIN
 {
-    class Work : IMoveable
+    public class Work : IMoveable
     {
         public Point Position { get; set; }
         public bool IsAlive()
