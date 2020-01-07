@@ -31,56 +31,51 @@ namespace ComputerraBIN
 
         public void Say(string WhatToSay)
         {
-            Console.WriteLine($"{Phrase}. My name is:{Name}, I'm:{Post}");
+            Console.WriteLine($"{WhatToSay}. My name is:{Name}, I'm:{Post}, My salary is {Salary}$");
         }
 
         public void Talk(Emploee ee)
         {
-            Console.SetCursorPosition(0, 15);
-            ClearCurrentConsoleLine();
+            Field field = new Field();
+            Console.SetCursorPosition(0, 16);
+            field.ClearCurrentConsoleLine();
             if ((this is Worker) && (ee is Worker))
             {
                 string phrase = "Be happy to!";
-                ClearCurrentConsoleLine();
+                field.ClearCurrentConsoleLine();
                 Console.WriteLine(phrase);
             }
             if ((this is Worker) && ((ee is Boss)||(ee is BigBoss)))
             {
                 string phrase = $"I hear and obey. {ee.Post}";
-                ClearCurrentConsoleLine();
+                field.ClearCurrentConsoleLine();
                 Console.WriteLine(phrase);
             }
             if ((this is Boss) && (ee is Worker))
             {
                 string phrase = "Move fasta'!";
-                ClearCurrentConsoleLine();
+                field.ClearCurrentConsoleLine();
                 Console.WriteLine(phrase);
             }
             if ((this is Boss) && (ee is Boss))
             {
                 string phrase = $"For the Horde!";
-                ClearCurrentConsoleLine();
+                field.ClearCurrentConsoleLine();
                 Console.WriteLine(phrase);
             }
             if ((this is Boss) && (ee is BigBoss))
             {
                 string phrase = $"Yes, chieftain?";
-                ClearCurrentConsoleLine();
+                field.ClearCurrentConsoleLine();
                 Console.WriteLine(phrase);
             }
             if (this is BigBoss)
             {
                 string phrase = $"We need more gold!";
-                ClearCurrentConsoleLine();
+                field.ClearCurrentConsoleLine();
                 Console.WriteLine(phrase);
             }
         }
-        public static void ClearCurrentConsoleLine()
-        {
-            int currentLineCursor = Console.CursorTop;
-            Console.SetCursorPosition(0, Console.CursorTop);
-            Console.Write(new string(' ', Console.WindowWidth));
-            Console.SetCursorPosition(0, currentLineCursor);
-        }
+        
     }
 }

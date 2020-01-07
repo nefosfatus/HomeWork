@@ -11,7 +11,7 @@ namespace ComputerraBIN
         
         static void Main(string[] args)
         {
-            const int maximum = 10;
+            const int maximum = 15;
             EmploeeGenerator emploeeGenerator = new EmploeeGenerator();
             Field field = new Field();
             Engine engine = new Engine();
@@ -19,6 +19,7 @@ namespace ComputerraBIN
             
             field.BuildWall(maximum, maximum);
             field.DrawPositions(emploees);
+            engine.SayHello(emploees);
             engine.StartWork(15,emploees, 2, maximum, 2, maximum);
             
           

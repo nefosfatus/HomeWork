@@ -76,5 +76,19 @@ namespace ComputerraBIN
             return coordinate;
         }
 
+        public void SayHello(List<Emploee> emploees)
+        {
+            int i = 18;
+            Console.SetCursorPosition(30, i);
+            field.ClearCurrentConsoleLine();
+            foreach (var emploee in emploees)
+            {
+                Console.SetCursorPosition(2, i);
+                emploee.Say("Hello!");
+                i++;
+            }
+
+        }
+
     }
 }
