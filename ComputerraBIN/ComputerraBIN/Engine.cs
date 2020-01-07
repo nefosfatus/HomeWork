@@ -17,13 +17,21 @@ namespace ComputerraBIN
                 foreach(var emploee in emploees)
                 {
                     Point newPosition = GetNewPosition(emploee.Position, minXCoordinate, maxXCoordinate,minYCoordiate,maxYCoordinate);
-                    
-                    ClearCell(emploee.Position);
-                    emploee.Move(newPosition);
-                    List<Emploee> currentEmploe = new List<Emploee> { emploee };
-                    field.DrawPositions(currentEmploe);
-                    currentEmploe.Clear();
-                    Task.Delay(2500).Wait();
+                    Emploee placeholder = CheckIt(emploees, newPosition);
+                    if (placeholder == null)
+                    {
+                        ClearCell(emploee.Position);
+                        emploee.Move(newPosition);
+                        List<Emploee> currentEmploe = new List<Emploee> { emploee };
+                        field.DrawPositions(currentEmploe);
+                        currentEmploe.Clear();
+                        
+                    }
+                    else
+                    {
+                        emploee.Talk(placeholder);
+                    }
+                    Task.Delay(1000).Wait();
                 }
                 
                 timeCycle--;
@@ -31,9 +39,10 @@ namespace ComputerraBIN
             return true;
         }
         
-        public void CheckIt(List<Emploee> emploees, Point newPosition)
+        public Emploee CheckIt(List<Emploee> emploees, Point newPosition)
         {
             Emploee placeholder = emploees.Where(s => s.Position == newPosition)?.FirstOrDefault();
+            return placeholder;
         }
         public void ClearCell(Point point)
         {

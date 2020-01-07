@@ -36,36 +36,51 @@ namespace ComputerraBIN
 
         public void Talk(Emploee ee)
         {
+            Console.SetCursorPosition(0, 15);
+            ClearCurrentConsoleLine();
             if ((this is Worker) && (ee is Worker))
             {
                 string phrase = "Be happy to!";
+                ClearCurrentConsoleLine();
                 Console.WriteLine(phrase);
             }
-            else
+            if ((this is Worker) && ((ee is Boss)||(ee is BigBoss)))
             {
                 string phrase = $"I hear and obey. {ee.Post}";
+                ClearCurrentConsoleLine();
                 Console.WriteLine(phrase);
             }
             if ((this is Boss) && (ee is Worker))
             {
                 string phrase = "Move fasta'!";
+                ClearCurrentConsoleLine();
                 Console.WriteLine(phrase);
             }
             if ((this is Boss) && (ee is Boss))
             {
                 string phrase = $"For the Horde!";
+                ClearCurrentConsoleLine();
                 Console.WriteLine(phrase);
             }
             if ((this is Boss) && (ee is BigBoss))
             {
                 string phrase = $"Yes, chieftain?";
+                ClearCurrentConsoleLine();
                 Console.WriteLine(phrase);
             }
             if (this is BigBoss)
             {
                 string phrase = $"We need more gold!";
+                ClearCurrentConsoleLine();
                 Console.WriteLine(phrase);
             }
+        }
+        public static void ClearCurrentConsoleLine()
+        {
+            int currentLineCursor = Console.CursorTop;
+            Console.SetCursorPosition(0, Console.CursorTop);
+            Console.Write(new string(' ', Console.WindowWidth));
+            Console.SetCursorPosition(0, currentLineCursor);
         }
     }
 }
