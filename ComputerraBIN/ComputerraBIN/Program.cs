@@ -19,7 +19,7 @@ namespace ComputerraBIN
             
             field.BuildWall(maximum, maximum);
             field.DrawPositions(emploees);
-            engine.StartWork(15,emploees, maximum, maximum, maximum, maximum);
+            engine.StartWork(15,emploees, 2, maximum, 2, maximum);
             
           
 

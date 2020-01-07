@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ComputerraBIN
 {
-    class Engine
+    public class Engine
     {
         Random random = new Random();
         Field field = new Field();
@@ -40,27 +40,47 @@ namespace ComputerraBIN
             Console.SetCursorPosition(point.CoordinateX, point.CoordinateY);
             Console.Write(" ");
         }
-        public Point GetNewPosition(Point currentPosition, int minXCoordinate, int maxXCoordinate, int minYCoordiate, int maxYCoordinate)
+        public Point GetNewPosition(Point currentPosition, int minXCoordinate, int maxXCoordinate, int minYCoordinate, int maxYCoordinate)
         {
             bool isFit = false;
             while (isFit == false)
             {
-                if (currentPosition.CoordinateX == 1 || currentPosition.CoordinateX == minXCoordinate-1 || currentPosition.CoordinateX == maxXCoordinate-1) 
+                if (currentPosition.CoordinateX <= minXCoordinate || currentPosition.CoordinateX >= maxXCoordinate) //if out field by X
                 {
-                    Point newPosition = SetPosition(currentPosition, maxXCoordinate, maxYCoordinate, 0, -1);
-                    isFit = true;
-                    return newPosition;
+                    if (currentPosition.CoordinateY > minYCoordinate || currentPosition.CoordinateY < maxYCoordinate) //if doesnt out field by Y
+                    {
+                        Point newPosition = SetPosition(currentPosition, maxXCoordinate, maxYCoordinate, 0, -1);
+                        isFit = true;
+                        return newPosition;
+                    }
+                    if (currentPosition.CoordinateY <= minYCoordinate || currentPosition.CoordinateY >= maxYCoordinate) //if  out field by Y
+                    {
+                        Point newPosition = SetPosition(currentPosition, maxXCoordinate, maxYCoordinate, 0, 0);
+                        isFit = true;
+                        return newPosition;
+                    }
+
                 }
-                if (currentPosition.CoordinateY == 1 || currentPosition.CoordinateY == minYCoordiate-1 || currentPosition.CoordinateY == maxYCoordinate-1)
+                if (currentPosition.CoordinateY <= minYCoordinate || currentPosition.CoordinateY >= maxYCoordinate ) //if outfield by Y
                 {
-                    Point newPosition = SetPosition(currentPosition, maxXCoordinate, maxYCoordinate, -1, 0);
-                    isFit = true;
-                    return newPosition;
+                    if (currentPosition.CoordinateX > minXCoordinate || currentPosition.CoordinateX < maxXCoordinate) //if doesnt out field by X
+                    {
+                        Point newPosition = SetPosition(currentPosition, maxXCoordinate, maxYCoordinate, -1, 0);
+                        isFit = true;
+                        return newPosition;
+                    }
+                    if (currentPosition.CoordinateX <= minXCoordinate || currentPosition.CoordinateX >= maxXCoordinate) //if  out field by X
+                    {
+                        Point newPosition = SetPosition(currentPosition, maxXCoordinate, maxYCoordinate, 0, 0);
+                        isFit = true;
+                        return newPosition;
+                    }
                 }
 
-                if ((currentPosition.CoordinateX !=1)  && (currentPosition.CoordinateY != 1))
+                if (currentPosition.CoordinateX > minXCoordinate && currentPosition.CoordinateX < maxXCoordinate
+                    && currentPosition.CoordinateY > minYCoordinate  && currentPosition.CoordinateY < maxYCoordinate)
                 {
-                    Point newPosition = SetPosition(currentPosition, maxXCoordinate, maxYCoordinate, -1, -1);
+                    Point newPosition = SetPosition(currentPosition, maxXCoordinate, maxYCoordinate, 0, 0);
                     isFit = true;
                     return newPosition;
 
