@@ -11,32 +11,34 @@ namespace ComputerraBIN
         
         static void Main(string[] args)
         {
-            const int maximum = 7;
+            //Max and min coordinates (Wall perimeter)
+            const int maximum = 15;
+            const int minimum = 2;
+            //Items count
+            const int workHours = 8;
+            const int workersCount = 8;
+            const int bossesCount = 5;
+            const int bigBossesCount = 2;
+            const int worksCount = 4;
+            const int customersCount = 1;
+
+            ///Instances for work with generator,drawer and engine
             EmploeeGenerator emploeeGenerator = new EmploeeGenerator();
             Field field = new Field();
             Engine engine = new Engine();
-            List<Emploee> emploees = emploeeGenerator.GenerateEmploees(5,2,1,2, maximum);
-            List<Work> works = emploeeGenerator.GenereteWork(4, 2, maximum);
-            List<Customer> customers = emploeeGenerator.GenereteCustomer(1, 2, maximum);
-            
-            field.BuildWall(maximum, maximum);
-            foreach(var item in emploees)
-            {
-                field.DrawPositions(item);
-            }
-            foreach (var item in works)
-            {
-                field.DrawPositions(item);
-            }
-            foreach (var item in customers)
-            {
-                field.DrawPositions(item);
-            }
 
-            engine.SayHello(emploees);
-            engine.StartWork(150,emploees, works, customers, 2, maximum, 2, maximum);
-            
-          
+            //generate 8 Workers,5 Bosses, 2 BigBosses
+            List<Emploee> emploees = emploeeGenerator.GenerateEmploees(workersCount, bossesCount, bigBossesCount, minimum, maximum);
+            //generate 4 works
+            List<Work> works = emploeeGenerator.GenereteWork(worksCount, minimum, maximum);
+            //generate 1 customer
+            List<Customer> customers = emploeeGenerator.GenereteCustomer(customersCount, minimum, maximum);
+            //Build wall by min/max position
+            field.BuildWall(maximum, maximum);
+            //Draw start position for all elements
+            field.DrawStartPositions(emploees, works, customers);
+            //Start engine for 8 hours
+            engine.StartWork(workHours, emploees, works, customers, minimum, maximum, minimum, maximum);
 
             Console.ReadKey();
         }

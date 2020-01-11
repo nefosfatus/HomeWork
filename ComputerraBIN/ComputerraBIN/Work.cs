@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace ComputerraBIN
 {
+    /// <summary>
+    /// Can't move, characterized only by the position
+    /// </summary>
     public class Work : IMoveable
     {
         public Point Position { get; set; }

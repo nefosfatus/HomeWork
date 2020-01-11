@@ -6,8 +6,16 @@ using System.Threading.Tasks;
 
 namespace ComputerraBIN
 {
+    /// <summary>
+    /// hard worker, can only do the job
+    /// </summary>
     public class Worker : Emploee, IManagable
     {
+        /// <summary>
+        /// do what the authorities say
+        /// after that mood is decreasing but salary is increasing
+        /// </summary>
+        /// <param name="managable"></param>
         public void DoWork(IManagable managable)
         {
             this.Mood = false;

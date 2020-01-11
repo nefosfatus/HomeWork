@@ -6,10 +6,16 @@ using System.Threading.Tasks;
 
 namespace ComputerraBIN
 {
+    /// <summary>
+    /// Class for generate items ant theirs parameters
+    /// </summary>
     public class EmploeeGenerator
     {
 
         private readonly Random random = new Random();
+        /// <summary>
+        /// Create List of emplooes
+        /// </summary>
         public List<Emploee> GenerateEmploees(int workersCount, int bossesCount, int bigBossesCount, int minCoordinate, int maxCoordinate)
         {
             List<Emploee> emploees = CreateEmploees(workersCount, bossesCount, bigBossesCount);
@@ -25,6 +31,9 @@ namespace ComputerraBIN
             }
             return emploees;
         }
+        /// <summary>
+        /// Create List of works
+        /// </summary>
         public List<Work> GenereteWork(int worksCount, int minCoordinate, int maxCoordinate)
         {
             List<Work> works = new List<Work>();
@@ -40,6 +49,9 @@ namespace ComputerraBIN
             }
             return works;
         }
+        /// <summary>
+        /// Create List of Customers
+        /// </summary>
         public List<Customer> GenereteCustomer(int customersCount, int minCoordinate, int maxCoordinate)
         {
             List<Customer> customers = new List<Customer>();
@@ -55,6 +67,9 @@ namespace ComputerraBIN
             }
             return customers;
         }
+        /// <summary>
+        /// Create emploee
+        /// </summary>
         public List<Emploee> CreateEmploees(int workersCount, int bossesCount, int bigBossesCount)
         {
             List<Emploee> workersList = new List<Emploee>();
@@ -78,6 +93,10 @@ namespace ComputerraBIN
             }
             return workersList;
         }
+        /// <summary>
+        /// Give name for each emploees in list 
+        /// </summary>
+        /// <param name="emploees"></param>
         public List<Emploee> GiveName(List<Emploee> emploees)
         {
             List<string> firstNames = new List<string>() { "John", "William", "James", "Charles", "George", "Frank", "Joseph", "Mary", "Anna", "Emma", "Elizabeth", "Minnie" };
@@ -91,7 +110,9 @@ namespace ComputerraBIN
             }
             return emploees;
         }
-
+        /// <summary>
+        /// Give position for each emploees in list 
+        /// </summary>
         public Point GivePosition(Point point, int minXCoordinate, int maxXCoordinate, int minYCoordinate, int maxYCoordinate)
         {
             List<Point> usedPoints = new List<Point>();
@@ -116,6 +137,9 @@ namespace ComputerraBIN
             }
             return point;
         }
+        /// <summary>
+        /// Give Mood for each emploees in list 
+        /// </summary>
         public List<Emploee> GiveMood(List<Emploee> emploees)
         {
             foreach (var emploee in emploees)
@@ -124,6 +148,9 @@ namespace ComputerraBIN
             }
             return emploees;
         }
+        /// <summary>
+        /// Give salary for each emploees in list 
+        /// </summary>
         public List<Emploee> GiveSalary(List<Emploee> emploees, int workerMin, int workerMax, int bossMin, int bossMax, int bigBossMin, int bigBossMax)
         {
             foreach (var emploee in emploees)
@@ -143,6 +170,9 @@ namespace ComputerraBIN
             }
             return emploees;
         }
+        /// <summary>
+        /// Give post for each emploees in list 
+        /// </summary>
         public List<Emploee> GivePost(List<Emploee> emploees)
         {
             foreach (var emploee in emploees)
@@ -162,6 +192,9 @@ namespace ComputerraBIN
             }
             return emploees;
         }
+        /// <summary>
+        /// Give phrase for each emploees in list 
+        /// </summary>
         public List<Emploee> GivePhrase(List<Emploee> emploees)
         {
             foreach (var emploee in emploees)

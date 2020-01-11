@@ -6,9 +6,16 @@ using System.Threading.Tasks;
 
 namespace ComputerraBIN
 {
+    /// <summary>
+    /// Class for draw in console
+    /// </summary>
     class Field
     {
-
+        /// <summary>
+        /// Create office wall
+        /// </summary>
+        /// <param name="wallHeight">wallHeight</param>
+        /// <param name="wallWidth">wallWidth</param>
         public void BuildWall(int wallHeight, int wallWidth)
         {
             for(int i = 1; i < wallHeight; i++)
@@ -28,9 +35,12 @@ namespace ComputerraBIN
                 Console.Write("#");
             }
         }
+        /// <summary>
+        /// Draw position for imovable element
+        /// </summary>
+        /// <param name="emploee"></param>
         public void DrawPositions(IMoveable emploee)
         {
-            
             if(emploee is Worker)
             {
                 Console.ForegroundColor = ConsoleColor.Gray;
@@ -63,13 +73,30 @@ namespace ComputerraBIN
             }
 
         }
-
+        /// <summary>
+        /// Clear curret console line for write neew message
+        /// </summary>
         public void ClearCurrentConsoleLine()
         {
             int currentLineCursor = Console.CursorTop;
             Console.SetCursorPosition(0, Console.CursorTop);
             Console.Write(new string(' ', Console.WindowWidth));
             Console.SetCursorPosition(0, currentLineCursor);
+        }
+        public void DrawStartPositions(List<Emploee> emploees, List<Work> works, List<Customer> customers)
+        {
+            foreach (var item in emploees)
+            {
+                DrawPositions(item);
+            }
+            foreach (var item in works)
+            {
+                DrawPositions(item);
+            }
+            foreach (var item in customers)
+            {
+                DrawPositions(item);
+            }
         }
     }
 }

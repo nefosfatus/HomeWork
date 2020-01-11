@@ -8,26 +8,41 @@ namespace ComputerraBIN
 {
     public class Customer : IManage, IMoveable
     {
+        /// <summary>
+        /// Has position
+        /// </summary>
         public Point Position { get; set; }
 
         Random rnd = new Random();
+        /// <summary>
+        /// Can manage staff
+        /// </summary>
+        /// <param name="imngbl"></param>
         public void Manage(IManagable imngbl)
         {
             imngbl.DoWork(imngbl);
         }
-        public Work CreateWork()
+        /// <summary>
+        /// Can create new work
+        /// </summary>
+        /// <returns>New work</returns>
+        public Work CreateWork(int minXCoordinate, int maxXCoordinate, int minYCoordiate, int maxYCoordinate)
         {
             Work work = new Work()
             {
                 Position = new Point()
                 {
-                    CoordinateX = rnd.Next(0, 100),
-                    CoordinateY = rnd.Next(0, 100)
+                    CoordinateX = rnd.Next(minXCoordinate, maxXCoordinate),
+                    CoordinateY = rnd.Next(minYCoordiate, maxYCoordinate)
                 }
             };
+            
             return work;
         }
-
+        /// <summary>
+        /// Can move
+        /// </summary>
+        /// <param name="p"></param>
         public void Move(Point p)
         {
             Position = new Point()
@@ -36,7 +51,10 @@ namespace ComputerraBIN
                 CoordinateY = p.CoordinateY
             };
         }
-
+        /// <summary>
+        /// check if item is alive
+        /// </summary>
+        /// <returns></returns>
         public bool IsAlive()
         {
             return false;
