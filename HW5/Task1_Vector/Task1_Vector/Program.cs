@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Task1_Vector
 {
@@ -10,6 +6,20 @@ namespace Task1_Vector
     {
         static void Main(string[] args)
         {
+         
+            Input input = new Input();
+            Output output = new Output();
+
+            Vector firstVector = input.GetUserInput();
+            Vector secondVector = input.GetUserInput();
+            output.PrintAllOperations(firstVector, secondVector);
+
+
+            Console.ReadLine();
+
+
+
+
         }
     }
 }
