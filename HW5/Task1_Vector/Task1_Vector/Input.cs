@@ -1,13 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Task1_Vector
 {
     class Input
     {
+        /// <summary>
+        /// create vector by user input
+        /// </summary>
+        /// <returns></returns>
         public Vector GetUserInput()
         {
             Vector vector = new Vector();

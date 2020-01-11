@@ -8,6 +8,9 @@ namespace Task1_Vector
 {
     class Output
     {
+        /// <summary>
+        /// Exapmle vectors operations
+        /// </summary>
         public void PrintAllOperations(Vector firstVector,Vector secondVector)
         {
             Vector multiplyByNumber = firstVector * 10;

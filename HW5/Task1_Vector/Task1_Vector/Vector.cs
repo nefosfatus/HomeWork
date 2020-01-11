@@ -2,11 +2,16 @@
 {
     public struct Vector
     {
+        /// <summary>
+        /// Vector coordinate
+        /// </summary>
         public double xAxisNumber { get; set; }
         public double yAxisNumber { get; set; }
         public double zAxisNumber { get; set; }
 
-        //operator overload to copare the position
+        /// <summary>
+        /// multiply vector on number
+        /// </summary>
         public static Vector operator *(Vector vector, double number)
         {
             vector = new Vector
@@ -17,18 +22,22 @@
             };
             return vector;
         }
+        /// <summary>
+        /// divide vector on number
+        /// </summary>
         public static Vector operator /(Vector vector, double number)
         {
             vector = new Vector
             {
                 xAxisNumber = vector.xAxisNumber / number,
                 yAxisNumber = vector.yAxisNumber / number,
-                zAxisNumber = vector.zAxisNumber /
-                
-                number
+                zAxisNumber = vector.zAxisNumber / number
             };
             return vector;
         }
+        /// <summary>
+        /// Vectors sum
+        /// </summary>
         public static Vector operator +(Vector vector, Vector vector2)
         {
             vector = new Vector
@@ -39,6 +48,9 @@
             };
             return vector;
         }
+        /// <summary>
+        /// Vectors diff
+        /// </summary>
         public static Vector operator -(Vector vector, Vector vector2)
         {
             vector = new Vector
@@ -49,12 +61,17 @@
             };
             return vector;
         }
-
+        /// <summary>
+        /// Vectors scalar multiply
+        /// </summary>
         public static double  ScalarMultiply(Vector vector, Vector vector2)
         {
             double scalarMultiply = vector.xAxisNumber * vector2.xAxisNumber + vector.yAxisNumber * vector2.yAxisNumber + vector.zAxisNumber * vector2.zAxisNumber;
             return scalarMultiply;
         }
+        /// <summary>
+        /// Vectors multiply for right basis
+        /// </summary>
         public static Vector operator *(Vector vector, Vector vector2)
         {
             Vector vectorMult = new Vector();
@@ -64,6 +81,10 @@
             return vectorMult;
         }
 
+        /// <summary>
+        /// get vector in format [x,y,z]
+        /// </summary>
+        /// <returns></returns>
         public string getVectorInStringFormat()
         {
             string stringAnswer = $"[{this.xAxisNumber},{this.yAxisNumber},{this.zAxisNumber}]";
