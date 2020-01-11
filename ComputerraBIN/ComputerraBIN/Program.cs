@@ -11,7 +11,7 @@ namespace ComputerraBIN
         
         static void Main(string[] args)
         {
-            const int maximum = 15;
+            const int maximum = 7;
             EmploeeGenerator emploeeGenerator = new EmploeeGenerator();
             Field field = new Field();
             Engine engine = new Engine();
@@ -34,7 +34,7 @@ namespace ComputerraBIN
             }
 
             engine.SayHello(emploees);
-            engine.StartWork(15,emploees, 2, maximum, 2, maximum);
+            engine.StartWork(150,emploees, works, customers, 2, maximum, 2, maximum);
             
           
 

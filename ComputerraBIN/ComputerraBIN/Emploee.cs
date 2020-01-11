@@ -31,7 +31,11 @@ namespace ComputerraBIN
 
         public void Say(string WhatToSay)
         {
+            Field field = new Field();
+            Console.SetCursorPosition(0, 18);
+            field.ClearCurrentConsoleLine();
             Console.WriteLine($"{WhatToSay}. My name is:{Name}, I'm:{Post}, My salary is {Salary}$");
+            
         }
 
         public void Talk(Emploee ee)

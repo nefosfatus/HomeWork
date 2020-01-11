@@ -26,21 +26,32 @@ namespace ComputerraBIN
                     }
                     if(emploee is Worker)
                     {
-                        if ((placeholder is Boss) || (placeholder is BigBoss) || (placeholder is Customer))
-                            emploee.Talk((Emploee)placeholder);
-                        if(placeholder is Work)
-                        {
-                            Point WorkNewPosition = GetNewPosition(placeholder.Position, minXCoordinate, maxXCoordinate, minYCoordiate, maxYCoordinate);
-                            IMoveable workplaceholder = CheckIt(emploees, works, customers, newPosition);
-                            if (workplaceholder == null)
-                                placeholder.Move(WorkNewPosition);
+                        var newPositionfinded = false;
+                        
+                            if ((placeholder is Boss) || (placeholder is BigBoss))
+                                emploee.Talk((Emploee)placeholder);
+                            if(placeholder is Work)
+                            {
+                            while (newPositionfinded != true)
+                            {
+                                Point WorkNewPosition = GetNewPosition(placeholder.Position, minXCoordinate, maxXCoordinate, minYCoordiate, maxYCoordinate);
+                                IMoveable workplaceholder = CheckIt(emploees, works, customers, WorkNewPosition);
+                                if (workplaceholder == null)
+                                {
+                                    ClearCell(placeholder.Position);
+                                    placeholder.Move(WorkNewPosition);
+                                    field.DrawPositions(placeholder);
+                                    emploee.Say("work is done");
+                                    newPositionfinded = true;
+                                }
                         }
-                            
+                        }
+
                     }
                     
                         
                     
-                    Task.Delay(1000).Wait();
+                    Task.Delay(500).Wait();
                 }
                 
                 timeCycle--;
