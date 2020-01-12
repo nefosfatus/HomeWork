@@ -32,8 +32,8 @@ namespace ComputerraBIN
             {
                 Position = new Point()
                 {
-                    CoordinateX = rnd.Next(minXCoordinate, maxXCoordinate),
-                    CoordinateY = rnd.Next(minYCoordiate, maxYCoordinate)
+                    CoordinateX = Utilities.GetRandomCoordinate(minXCoordinate, maxXCoordinate),
+                    CoordinateY = Utilities.GetRandomCoordinate(minYCoordiate, maxYCoordinate)
                 }
             };
             

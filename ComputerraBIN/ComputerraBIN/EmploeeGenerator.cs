@@ -55,15 +55,12 @@ namespace ComputerraBIN
         public List<Customer> GenereteCustomer(int customersCount, int minCoordinate, int maxCoordinate)
         {
             List<Customer> customers = new List<Customer>();
-            while (customersCount != 0)
+
+            for (int count = customersCount; count!=0; count--)
             {
                 Customer customer = new Customer();
-                customers.Add(customer);
-                customersCount--;
-            }
-            foreach (var customer in customers)
-            {
                 customer.Position = GivePosition(customer.Position, minCoordinate, maxCoordinate, minCoordinate, maxCoordinate);
+                customers.Add(customer);
             }
             return customers;
         }
@@ -122,8 +119,8 @@ namespace ComputerraBIN
             {
                 point = new Point
                 {
-                    CoordinateX = random.Next(minXCoordinate, maxXCoordinate),
-                    CoordinateY = random.Next(minYCoordinate, maxYCoordinate)
+                    CoordinateX = Utilities.GetRandomCoordinate(minXCoordinate, maxXCoordinate),
+                    CoordinateY = Utilities.GetRandomCoordinate(minYCoordinate, maxYCoordinate)
                 };
                 if (usedPoints.Contains(point))
                 {

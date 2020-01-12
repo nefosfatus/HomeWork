@@ -83,20 +83,13 @@ namespace ComputerraBIN
             Console.Write(new string(' ', Console.WindowWidth));
             Console.SetCursorPosition(0, currentLineCursor);
         }
-        public void DrawStartPositions(List<Emploee> emploees, List<Work> works, List<Customer> customers)
+        public void DrawStartPositions(List<IMoveable> items)
         {
-            foreach (var item in emploees)
+            foreach (var item in items)
             {
                 DrawPositions(item);
             }
-            foreach (var item in works)
-            {
-                DrawPositions(item);
-            }
-            foreach (var item in customers)
-            {
-                DrawPositions(item);
-            }
+            
         }
     }
 }

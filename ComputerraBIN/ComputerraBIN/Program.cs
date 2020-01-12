@@ -35,8 +35,14 @@ namespace ComputerraBIN
             List<Customer> customers = emploeeGenerator.GenereteCustomer(customersCount, minimum, maximum);
             //Build wall by min/max position
             field.BuildWall(maximum, maximum);
+            //cast to IMoveble and concatinate to one list
+            List<IMoveable> emploeesMovebles = emploees.Cast<IMoveable>().ToList();
+            List<IMoveable> worksMoveables = works.Cast<IMoveable>().ToList();
+            List<IMoveable> customersMoveables = customers.Cast<IMoveable>().ToList();
+            List<IMoveable> allItems = new List<IMoveable>();
+            allItems = allItems.Concat(emploeesMovebles).Concat(worksMoveables).Concat(customersMoveables).ToList();
             //Draw start position for all elements
-            field.DrawStartPositions(emploees, works, customers);
+            field.DrawStartPositions(allItems);
             //Start engine for 8 hours
             engine.StartWork(workHours, emploees, works, customers, minimum, maximum, minimum, maximum);
 
