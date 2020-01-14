@@ -38,87 +38,16 @@ namespace ComputerraBIN
                     }
                     if (emploee is Worker)
                     {
-                        var newPositionfinded = false;
-                        if ((placeholder is Boss) || (placeholder is BigBoss))
-                            emploee.Talk((Emploee)placeholder);
-                        if (placeholder is Work)
-                        {
-                            while (newPositionfinded != true)
-                            {
-                                Point WorkNewPosition = GetNewPosition(placeholder.Position, minXCoordinate, maxXCoordinate, minYCoordiate, maxYCoordinate);
-                                IMoveable workplaceholder = CheckIt(emploees, works, customers, WorkNewPosition);
-                                if (workplaceholder == null)
-                                {
-                                    ClearCell(placeholder.Position);
-                                    placeholder.Move(WorkNewPosition);
-                                    field.DrawPositions(placeholder);
-                                    emploee.SalaryIncrease(100);
-                                    emploee.Say("work is done");
-                                    newPositionfinded = true;
-                                }
-                            }
-                        }
-                        if (placeholder is Customer)
-                        {
-                            continue;
-                        }
-
-                    }
+						DoWorkerJob(emploees, works, customers, placeholder,  emploee, minXCoordinate, maxXCoordinate, minYCoordiate, maxYCoordinate);
+					}
                     if (emploee is Boss)
                     {
-                        if (placeholder is Worker)
-                        {
-                            ((Boss)emploee).Talk((Worker)placeholder);
-                            ((Boss)emploee).DoWork((IManagable)placeholder);
-                            emploee.SalaryIncrease(10);
-                        }
-                        if (placeholder is Boss)
-                        {
-                            emploee.Talk((Emploee)placeholder);
-                            ((Boss)emploee).DoWork((IManagable)placeholder);
-                        }
-                        if (placeholder is BigBoss)
-                        {
-                            emploee.Talk((Emploee)placeholder);
-                        }
-                        if (placeholder is Work)
-                        {
-                            emploee.Say("Now I will find a specialist");
-                        }
-                        if (placeholder is Customer)
-                        {
-                            emploee.Say("Your task will be completed as soon as possible");
-                            emploee.SalaryIncrease(100);
-                        }
-                    }
+						DoBossJob(emploees, works, customers, placeholder, emploee, minXCoordinate, maxXCoordinate, minYCoordiate, maxYCoordinate);
+					}
                     if (emploee is BigBoss)
                     {
-                        if (placeholder is Worker)
-                        {
-                            ((BigBoss)emploee).Manage((IManagable)placeholder);
-                            emploee.SalaryIncrease(10);
-                        }
-                        if (placeholder is Boss)
-                        {
-                            emploee.Talk((Emploee)placeholder);
-                            ((IManage)emploee).Manage((IManagable)placeholder);
-                        }
-                        if (placeholder is Work)
-                        {
-                            emploee.Say("Now I will find a manager");
-                        }
-                        if (placeholder is Customer)
-                        {
-                            emploee.Say("How about new project?");
-                            Work newWork = ((Customer)placeholder).CreateWork(minXCoordinate, maxXCoordinate, minYCoordiate, maxYCoordinate);
-                            field.DrawPositions(newWork);
-                            emploee.SalaryIncrease(1000);
-                        }
-                        if (placeholder is BigBoss)
-                        {
-                            emploee.Talk((Emploee)placeholder);
-                        }
-                    }
+						DoBigBossJob(emploees, works, customers, placeholder, emploee, minXCoordinate, maxXCoordinate, minYCoordiate, maxYCoordinate);
+					}
                     Task.Delay(500).Wait();
                     continue;
                 }
@@ -191,7 +120,6 @@ namespace ComputerraBIN
         /// </summary>
         public int SetPosition(int coordinate, int minCoordinate, int maxCoordinate)
         {
-
             if (coordinate  < maxCoordinate && coordinate  > minCoordinate)
             {
                 coordinate  += random.Next(-1, 2);
@@ -204,8 +132,82 @@ namespace ComputerraBIN
             {
                 coordinate  += random.Next(0, 2);
             }
-
             return coordinate;
         }
-    }
+		public void DoWorkerJob(List<Emploee> emploees, List<Work> works, List<Customer> customers,IMoveable placeholder,Emploee emploee, int minXCoordinate, int maxXCoordinate, int minYCoordiate, int maxYCoordinate)
+		{
+			if ((placeholder is Boss) || (placeholder is BigBoss))
+				emploee.Talk((Emploee)placeholder);
+			if (placeholder is Work)
+			{
+				Point WorkNewPosition = GetNewPosition(placeholder.Position, minXCoordinate, maxXCoordinate, minYCoordiate, maxYCoordinate);
+				IMoveable workplaceholder = CheckIt(emploees, works, customers, WorkNewPosition);
+				if (workplaceholder == null)
+				{
+					ClearCell(placeholder.Position);
+					placeholder.Move(WorkNewPosition);
+					field.DrawPositions(placeholder);
+					emploee.SalaryIncrease(100);
+					emploee.Say("work is done");
+				}
+			}
+		}
+
+		public void DoBossJob(List<Emploee> emploees, List<Work> works, List<Customer> customers, IMoveable placeholder, Emploee emploee, int minXCoordinate, int maxXCoordinate, int minYCoordiate, int maxYCoordinate)
+		{
+			if (placeholder is Worker)
+			{
+				((Boss)emploee).Talk((Worker)placeholder);
+				((Boss)emploee).DoWork((IManagable)placeholder);
+				emploee.SalaryIncrease(10);
+			}
+			if (placeholder is Boss)
+			{
+				emploee.Talk((Emploee)placeholder);
+				((Boss)emploee).DoWork((IManagable)placeholder);
+			}
+			if (placeholder is BigBoss)
+			{
+				emploee.Talk((Emploee)placeholder);
+			}
+			if (placeholder is Work)
+			{
+				emploee.Say("Now I will find a specialist");
+			}
+			if (placeholder is Customer)
+			{
+				emploee.Say("Your task will be completed as soon as possible");
+				emploee.SalaryIncrease(100);
+			}
+		}
+		public void DoBigBossJob(List<Emploee> emploees, List<Work> works, List<Customer> customers, IMoveable placeholder, Emploee emploee, int minXCoordinate, int maxXCoordinate, int minYCoordiate, int maxYCoordinate)
+		{
+			if (placeholder is Worker)
+			{
+				((BigBoss)emploee).Manage((IManagable)placeholder);
+				emploee.SalaryIncrease(10);
+			}
+			if (placeholder is Boss)
+			{
+				emploee.Talk((Emploee)placeholder);
+				((IManage)emploee).Manage((IManagable)placeholder);
+			}
+			if (placeholder is Work)
+			{
+				emploee.Say("Now I will find a manager");
+			}
+			if (placeholder is Customer)
+			{
+				emploee.Say("How about new project?");
+				Work newWork = ((Customer)placeholder).CreateWork(minXCoordinate, maxXCoordinate, minYCoordiate, maxYCoordinate);
+				field.DrawPositions(newWork);
+				emploee.SalaryIncrease(1000);
+			}
+			if (placeholder is BigBoss)
+			{
+				emploee.Talk((Emploee)placeholder);
+			}
+		}
+	}
 }
+ 

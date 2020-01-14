@@ -94,7 +94,7 @@ namespace ComputerraBIN
             }
             if ((this is Boss) && (ee is BigBoss))
             {
-                string phrase = $"Yes, chieftain?";
+                string phrase = $"Yes, chieftain? ";
                 field.ClearCurrentConsoleLine();
                 Console.WriteLine(phrase);
             }
