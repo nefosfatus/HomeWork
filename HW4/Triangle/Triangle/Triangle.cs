@@ -26,8 +26,16 @@ namespace Triangle
             DistanceAB = _calculator.CalculateDistance(PointA, PointB);
             DistanceBC = _calculator.CalculateDistance(PointB, PointC);
             DistanceCA = _calculator.CalculateDistance(PointC, PointA);
-            perimetr = _calculator.CalculatePerimetr(DistanceAB,DistanceBC,DistanceCA);
-            area = _calculator.CalculateArea(DistanceAB, DistanceBC, DistanceCA);
+            bool exist = GetExistenceInfo();
+            if (exist)
+            {
+                perimetr = _calculator.CalculatePerimetr(DistanceAB, DistanceBC, DistanceCA);
+                area = _calculator.CalculateArea(DistanceAB, DistanceBC, DistanceCA);
+            }
+            else
+            {
+                throw new Exception("Треугольник не существует");
+            }
         }
         /// <summary>
         /// Method displays  triangle's data in console
@@ -39,6 +47,20 @@ namespace Triangle
             Console.WriteLine($"\nКоординаты точки C:{PointC[0]},{PointC[1]}");
             Console.WriteLine($"\n Периметр треугольника: {perimetr}");
             Console.WriteLine($"\n Площадь треугольника: {area}");
+        }
+        /// <summary>
+        /// Check exist triangle or not
+        /// </summary>
+        /// <returns></returns>
+        public bool GetExistenceInfo()
+        {
+            if (this.DistanceAB + this.distanceBC > this.DistanceCA)
+                return true;
+            if (this.DistanceAB + this.DistanceCA >  this.distanceBC)
+                return true;
+            if ( this.distanceBC + this.DistanceCA > this.DistanceAB)
+                return true;
+            return false;
         }
         //Properties 
         public List<int> PointA { get { return pointAData; } set { pointAData = value; } }

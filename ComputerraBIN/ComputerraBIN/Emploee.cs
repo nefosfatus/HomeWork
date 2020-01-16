@@ -19,7 +19,7 @@ namespace ComputerraBIN
         public bool Mood { get; set; }  
         public Point Position { get; set; }  
         public string Post { get; set; }    
-        public string Phrase { get; set; }  
+        public string Phrase { get; set; }
         /// <summary>
         /// check if item is alive
         /// </summary>
@@ -54,9 +54,8 @@ namespace ComputerraBIN
         /// <param name="WhatToSay"></param>
         public void Say(string WhatToSay)
         {
-            Field field = new Field();
             Console.SetCursorPosition(0, 18);
-            field.ClearCurrentConsoleLine();
+            Utilities.ClearCurrentConsoleLine();
             Console.WriteLine($"{WhatToSay}. My name is:{Name}, I'm:{Post}, My salary is {Salary}$");
         }
         /// <summary>
@@ -65,45 +64,47 @@ namespace ComputerraBIN
         /// <param name="ee">emploee </param>
         public void Talk(Emploee ee)
         {
-            Field field = new Field();
             Console.SetCursorPosition(0, 16);
-            field.ClearCurrentConsoleLine();
+            Utilities.ClearCurrentConsoleLine();
             if ((this is Worker) && (ee is Worker))
             {
-                string phrase = "Be happy to!";
-                field.ClearCurrentConsoleLine();
-                Console.WriteLine(phrase);
+                PrintPhrase("Be happy to!");
+                return;
             }
             if ((this is Worker) && ((ee is Boss)||(ee is BigBoss)))
             {
-                string phrase = $"I hear and obey. {ee.Post}";
-                field.ClearCurrentConsoleLine();
-                Console.WriteLine(phrase);
+                PrintPhrase($"I hear and obey. {ee.Post}");
+                return;
             }
             if ((this is Boss) && (ee is Worker))
             {
-                string phrase = "Move fasta'!";
-                field.ClearCurrentConsoleLine();
-                Console.WriteLine(phrase);
+                PrintPhrase("Move fasta'!");
+                return;
             }
             if ((this is Boss) && (ee is Boss))
             {
-                string phrase = $"For the Horde!";
-                field.ClearCurrentConsoleLine();
-                Console.WriteLine(phrase);
+                PrintPhrase($"For the Horde!");
+                return;
             }
             if ((this is Boss) && (ee is BigBoss))
             {
-                string phrase = $"Yes, chieftain? ";
-                field.ClearCurrentConsoleLine();
-                Console.WriteLine(phrase);
+                PrintPhrase("Yes, chieftain?");
+                return;
             }
             if (this is BigBoss)
             {
-                string phrase = $"We need more gold!";
-                field.ClearCurrentConsoleLine();
-                Console.WriteLine(phrase);
+                PrintPhrase($"We need more gold!");
+                return;
             }
+        }
+        /// <summary>
+        /// Clear current console line and print new phrase
+        /// </summary>
+        /// <param name="phrase"></param>
+        public void PrintPhrase(string phrase)
+        {
+            Utilities.ClearCurrentConsoleLine();
+            Console.WriteLine(phrase);
         }
         
     }

@@ -74,10 +74,9 @@ namespace ComputerraBIN
         /// <param name="timeCycle"></param>
         public void PrintWorkTime(int timeCycle)
         {
-            Field field = new Field();
             Console.ForegroundColor = ConsoleColor.White;
             Console.SetCursorPosition(0, 0);
-            field.ClearCurrentConsoleLine();
+            Utilities.ClearCurrentConsoleLine();
             Console.WriteLine($"Until the end of the working day: {timeCycle} hours");
         }
         /// <summary>
@@ -85,9 +84,13 @@ namespace ComputerraBIN
         /// </summary>
         public IMoveable CheckIt(List<Emploee> emploees,List<Work> works,List<Customer> customers, Point newPosition)
         {
-            Emploee emploee = emploees.Where(s => s.Position == newPosition)?.FirstOrDefault();
-            Work work = works.Where(s => s.Position == newPosition)?.FirstOrDefault();
-            Customer customer = customers.Where(s => s.Position == newPosition)?.FirstOrDefault();
+            List<IMoveable> emploeesMovebles = emploees.Cast<IMoveable>().ToList();
+            List<IMoveable> worksMoveables = works.Cast<IMoveable>().ToList();
+            List<IMoveable> customersMoveables = customers.Cast<IMoveable>().ToList();
+
+            var emploee = GetElementOnPosition(emploeesMovebles, newPosition);
+            var work = GetElementOnPosition(worksMoveables, newPosition);
+            var customer = GetElementOnPosition(customersMoveables, newPosition);
             if (emploee != null)
                 return emploee;
             if (work != null)
@@ -95,6 +98,11 @@ namespace ComputerraBIN
             if (customer != null)
                 return customer;
             return null;
+        }
+        public IMoveable GetElementOnPosition(List<IMoveable> list,Point point)
+        {
+            IMoveable element = list.Where(s => s.Position == point).FirstOrDefault();
+            return element;
         }
         /// <summary>
         /// Clear current position before move to new position

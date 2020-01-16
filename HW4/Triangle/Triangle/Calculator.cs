@@ -56,7 +56,6 @@ namespace Triangle
             double semiPerimetrMinusC = semiPerimetr - thirdDistance;  //p - CA
             double area = Math.Sqrt(semiPerimetr * semiPerimetrMinusA * semiPerimetrMinusB * semiPerimetrMinusC); //sqrt(p*(p - AB)*(p - BC)*(p - CA))
             return area;
-
         }
     }
 }

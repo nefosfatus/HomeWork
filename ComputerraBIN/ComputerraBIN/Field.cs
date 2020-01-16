@@ -20,20 +20,23 @@ namespace ComputerraBIN
         {
             for(int i = 1; i < wallHeight; i++)
             {
-                Console.ForegroundColor = ConsoleColor.White;
-                Console.SetCursorPosition(1, i);
-                Console.Write("#");
-                Console.SetCursorPosition(wallWidth, i);
-                Console.Write("#");
+                PutBrick(1, i, wallHeight,i);
             }
             for (int i = 1; i < wallWidth; i++)
             {
-                Console.ForegroundColor = ConsoleColor.White;
-                Console.SetCursorPosition(i, 1);
-                Console.Write("#");
-                Console.SetCursorPosition(i, wallHeight);
-                Console.Write("#");
+                PutBrick(i, 1, i, wallWidth);
             }
+        }
+        /// <summary>
+        /// Drow # element
+        /// </summary>
+        public void PutBrick(int a,int b,int c,int d)
+        {
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.SetCursorPosition(a, b); 
+            Console.Write("#");
+            Console.SetCursorPosition(c, d);
+            Console.Write("#");
         }
         /// <summary>
         /// Draw position for imovable element
@@ -41,47 +44,45 @@ namespace ComputerraBIN
         /// <param name="emploee"></param>
         public void DrawPositions(IMoveable emploee)
         {
-            if(emploee is Worker)
+            string emploeeSymbol = "W";
+            string customerSymbol = "C";
+            string workSymbol = "$";
+            ConsoleColor workerColor = ConsoleColor.White;
+            ConsoleColor bossColor = ConsoleColor.Blue;
+            ConsoleColor bigBossColor = ConsoleColor.DarkYellow;
+            ConsoleColor workColor = ConsoleColor.Yellow;
+            if (emploee is Worker)
             {
-                Console.ForegroundColor = ConsoleColor.Gray;
-                Console.SetCursorPosition(emploee.Position.CoordinateX, emploee.Position.CoordinateY);
-                Console.Write("W");
+                DrawSymbol(emploeeSymbol, emploee.Position, workerColor);
+                return;
             }
             if (emploee is Boss)
             {
-                Console.ForegroundColor = ConsoleColor.DarkBlue;
-                Console.SetCursorPosition(emploee.Position.CoordinateX, emploee.Position.CoordinateY);
-                Console.Write("W");
+                DrawSymbol(emploeeSymbol, emploee.Position, bossColor);
+                return;
             }
             if (emploee is BigBoss)
             {
-                Console.ForegroundColor = ConsoleColor.DarkYellow;
-                Console.SetCursorPosition(emploee.Position.CoordinateX, emploee.Position.CoordinateY);
-                Console.Write("W");
+                DrawSymbol(emploeeSymbol, emploee.Position, bigBossColor);
+                return;
             }
             if (emploee is Customer)
             {
-                Console.ForegroundColor = ConsoleColor.White;
-                Console.SetCursorPosition(emploee.Position.CoordinateX, emploee.Position.CoordinateY);
-                Console.Write("C");
+                DrawSymbol(customerSymbol, emploee.Position, workerColor);
+                return;
             }
             if (emploee is Work)
             {
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.SetCursorPosition(emploee.Position.CoordinateX, emploee.Position.CoordinateY);
-                Console.Write("$");
+                DrawSymbol(workSymbol, emploee.Position, workColor);
+                return;
             }
+        }  
 
-        }
-        /// <summary>
-        /// Clear curret console line for write neew message
-        /// </summary>
-        public void ClearCurrentConsoleLine()
+        public void DrawSymbol(string symbol,Point position, ConsoleColor consoleColor)
         {
-            int currentLineCursor = Console.CursorTop;
-            Console.SetCursorPosition(0, Console.CursorTop);
-            Console.Write(new string(' ', Console.WindowWidth));
-            Console.SetCursorPosition(0, currentLineCursor);
+            Console.ForegroundColor = consoleColor;
+            Console.SetCursorPosition(position.CoordinateX, position.CoordinateY);
+            Console.Write(symbol);
         }
         public void DrawStartPositions(List<IMoveable> items)
         {
