@@ -26,14 +26,14 @@ namespace ComputerraBIN
         /// Can create new work
         /// </summary>
         /// <returns>New work</returns>
-        public Work CreateWork(int minXCoordinate, int maxXCoordinate, int minYCoordiate, int maxYCoordinate)
+        public Work CreateWork(CoordinateLimits coordinateLimits)
         {
             Work work = new Work()
             {
                 Position = new Point()
                 {
-                    CoordinateX = Utilities.GetRandomCoordinate(minXCoordinate, maxXCoordinate),
-                    CoordinateY = Utilities.GetRandomCoordinate(minYCoordiate, maxYCoordinate)
+                    CoordinateX = Utilities.GetRandomCoordinate(coordinateLimits.CoordinateXMin, coordinateLimits.CoordinateXMax),
+                    CoordinateY = Utilities.GetRandomCoordinate(coordinateLimits.CoordinateYMin, coordinateLimits.CoordinateYMax)
                 }
             };
             

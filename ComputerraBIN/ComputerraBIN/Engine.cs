@@ -21,15 +21,18 @@ namespace ComputerraBIN
         /// <param name="works">Work to do </param>
         /// <param name="customers">Customers</param>
         /// Move only in office field
-        public bool StartWork(int timeCycle, List<Emploee> emploees,List<Work> works,List<Customer> customers,int minXCoordinate, int maxXCoordinate,int minYCoordiate, int maxYCoordinate)
+        public bool StartWork(int timeCycle, List<IMoveable> all,CoordinateLimits coordinateLimits)
         {
+            var emploees = all.OfType<Emploee>();
+            var customers = all.OfType<Customer>();
+            var works = all.OfType<Work>();
             while (timeCycle != 0)
             {
                 PrintWorkTime(timeCycle);
                 foreach (var emploee in emploees)
                 {
-                    Point newPosition = GetNewPosition(emploee.Position, minXCoordinate, maxXCoordinate, minYCoordiate, maxYCoordinate);
-                    IMoveable placeholder = CheckIt(emploees, works, customers, newPosition);
+                    Point newPosition = GetNewPosition(emploee.Position, coordinateLimits);
+                    IMoveable placeholder = CheckIt(all, newPosition);
                     if (placeholder == null)
                     {
                         ClearCell(emploee.Position);
@@ -38,23 +41,23 @@ namespace ComputerraBIN
                     }
                     if (emploee is Worker)
                     {
-						DoWorkerJob(emploees, works, customers, placeholder,  emploee, minXCoordinate, maxXCoordinate, minYCoordiate, maxYCoordinate);
-					}
+                        DoWorkerJob(all, placeholder, emploee, coordinateLimits);
+                    }
                     if (emploee is Boss)
                     {
-						DoBossJob(emploees, works, customers, placeholder, emploee, minXCoordinate, maxXCoordinate, minYCoordiate, maxYCoordinate);
-					}
+                        DoBossJob(all, placeholder, emploee, coordinateLimits);
+                    }
                     if (emploee is BigBoss)
                     {
-						DoBigBossJob(emploees, works, customers, placeholder, emploee, minXCoordinate, maxXCoordinate, minYCoordiate, maxYCoordinate);
-					}
+                        DoBigBossJob(all, placeholder, emploee, coordinateLimits);
+                    }
                     Task.Delay(500).Wait();
                     continue;
                 }
                 foreach(var customer in customers)
                 {
-                    Point newPosition = GetNewPosition(customer.Position, minXCoordinate, maxXCoordinate, minYCoordiate, maxYCoordinate);
-                    IMoveable placeholder = CheckIt(emploees, works, customers, newPosition);
+                    Point newPosition = GetNewPosition(customer.Position, coordinateLimits);
+                    IMoveable placeholder = CheckIt(all, newPosition);
                     if (placeholder == null)
                     {
                         ClearCell(customer.Position);
@@ -82,21 +85,11 @@ namespace ComputerraBIN
         /// <summary>
         /// Check free position for move
         /// </summary>
-        public IMoveable CheckIt(List<Emploee> emploees,List<Work> works,List<Customer> customers, Point newPosition)
+        public IMoveable CheckIt(List<IMoveable> all, Point newPosition)
         {
-            List<IMoveable> emploeesMovebles = emploees.Cast<IMoveable>().ToList();
-            List<IMoveable> worksMoveables = works.Cast<IMoveable>().ToList();
-            List<IMoveable> customersMoveables = customers.Cast<IMoveable>().ToList();
-
-            var emploee = GetElementOnPosition(emploeesMovebles, newPosition);
-            var work = GetElementOnPosition(worksMoveables, newPosition);
-            var customer = GetElementOnPosition(customersMoveables, newPosition);
-            if (emploee != null)
-                return emploee;
-            if (work != null)
-                return work;
-            if (customer != null)
-                return customer;
+            var placeholder = GetElementOnPosition(all, newPosition);
+            if (placeholder != null)
+                return placeholder;
             return null;
         }
         public IMoveable GetElementOnPosition(List<IMoveable> list,Point point)
@@ -117,10 +110,10 @@ namespace ComputerraBIN
         /// <summary>
         /// Move to new position
         /// </summary>
-        public Point GetNewPosition(Point currentPosition, int minXCoordinate, int maxXCoordinate, int minYCoordinate, int maxYCoordinate)
+        public Point GetNewPosition(Point currentPosition, CoordinateLimits coordinateLimits)
         {
-            currentPosition.CoordinateX = SetPosition(currentPosition.CoordinateX, minXCoordinate, maxXCoordinate);
-            currentPosition.CoordinateY = SetPosition(currentPosition.CoordinateY, minYCoordinate, maxYCoordinate);
+            currentPosition.CoordinateX = SetPosition(currentPosition.CoordinateX, coordinateLimits.CoordinateXMin, coordinateLimits.CoordinateXMax);
+            currentPosition.CoordinateY = SetPosition(currentPosition.CoordinateY, coordinateLimits.CoordinateYMin, coordinateLimits.CoordinateYMax);
             return currentPosition;
         }
         /// <summary>
@@ -142,14 +135,14 @@ namespace ComputerraBIN
             }
             return coordinate;
         }
-		public void DoWorkerJob(List<Emploee> emploees, List<Work> works, List<Customer> customers,IMoveable placeholder,Emploee emploee, int minXCoordinate, int maxXCoordinate, int minYCoordiate, int maxYCoordinate)
+		public void DoWorkerJob(List<IMoveable> emploees,IMoveable placeholder,Emploee emploee,CoordinateLimits coordinateLimits)
 		{
 			if ((placeholder is Boss) || (placeholder is BigBoss))
 				emploee.Talk((Emploee)placeholder);
 			if (placeholder is Work)
 			{
-				Point WorkNewPosition = GetNewPosition(placeholder.Position, minXCoordinate, maxXCoordinate, minYCoordiate, maxYCoordinate);
-				IMoveable workplaceholder = CheckIt(emploees, works, customers, WorkNewPosition);
+				Point WorkNewPosition = GetNewPosition(placeholder.Position, coordinateLimits);
+				IMoveable workplaceholder = CheckIt(emploees, WorkNewPosition);
 				if (workplaceholder == null)
 				{
 					ClearCell(placeholder.Position);
@@ -161,7 +154,7 @@ namespace ComputerraBIN
 			}
 		}
 
-		public void DoBossJob(List<Emploee> emploees, List<Work> works, List<Customer> customers, IMoveable placeholder, Emploee emploee, int minXCoordinate, int maxXCoordinate, int minYCoordiate, int maxYCoordinate)
+		public void DoBossJob(List<IMoveable> emploees, IMoveable placeholder, Emploee emploee, CoordinateLimits coordinateLimits)
 		{
 			if (placeholder is Worker)
 			{
@@ -188,7 +181,7 @@ namespace ComputerraBIN
 				emploee.SalaryIncrease(100);
 			}
 		}
-		public void DoBigBossJob(List<Emploee> emploees, List<Work> works, List<Customer> customers, IMoveable placeholder, Emploee emploee, int minXCoordinate, int maxXCoordinate, int minYCoordiate, int maxYCoordinate)
+		public void DoBigBossJob(List<IMoveable> emploees, IMoveable placeholder, Emploee emploee, CoordinateLimits coordinateLimits)
 		{
 			if (placeholder is Worker)
 			{
@@ -207,7 +200,7 @@ namespace ComputerraBIN
 			if (placeholder is Customer)
 			{
 				emploee.Say("How about new project?");
-				Work newWork = ((Customer)placeholder).CreateWork(minXCoordinate, maxXCoordinate, minYCoordiate, maxYCoordinate);
+				Work newWork = ((Customer)placeholder).CreateWork(coordinateLimits);
 				field.DrawPositions(newWork);
 				emploee.SalaryIncrease(1000);
 			}

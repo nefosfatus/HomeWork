@@ -12,8 +12,14 @@ namespace ComputerraBIN
         static void Main(string[] args)
         {
             //Max and min coordinates (Wall perimeter)
+            CoordinateLimits coordinateLimits = new CoordinateLimits();
+            coordinateLimits.CoordinateXMax = 15;
+            coordinateLimits.CoordinateYMax = 15;
+            coordinateLimits.CoordinateXMin = 2;
+            coordinateLimits.CoordinateYMin = 2;
             const int maximum = 15;
             const int minimum = 2;
+
             //Items count
             const int workHours = 8;
             const int workersCount = 8;
@@ -44,7 +50,7 @@ namespace ComputerraBIN
             //Draw start position for all elements
             field.DrawStartPositions(allItems);
             //Start engine for 8 hours
-            engine.StartWork(workHours, emploees, works, customers, minimum, maximum, minimum, maximum);
+            engine.StartWork(workHours,allItems, coordinateLimits);
 
             Console.ReadKey();
         }

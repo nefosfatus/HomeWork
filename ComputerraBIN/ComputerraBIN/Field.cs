@@ -18,9 +18,9 @@ namespace ComputerraBIN
         /// <param name="wallWidth">wallWidth</param>
         public void BuildWall(int wallHeight, int wallWidth)
         {
-            for(int i = 1; i < wallHeight; i++)
+            for (int i = 1; i < wallHeight; i++)
             {
-                PutBrick(1, i, wallHeight,i);
+                PutBrick(1, i, wallHeight, i);
             }
             for (int i = 1; i < wallWidth; i++)
             {
@@ -30,10 +30,10 @@ namespace ComputerraBIN
         /// <summary>
         /// Drow # element
         /// </summary>
-        public void PutBrick(int a,int b,int c,int d)
+        public void PutBrick(int a, int b, int c, int d)
         {
             Console.ForegroundColor = ConsoleColor.White;
-            Console.SetCursorPosition(a, b); 
+            Console.SetCursorPosition(a, b);
             Console.Write("#");
             Console.SetCursorPosition(c, d);
             Console.Write("#");
@@ -76,9 +76,9 @@ namespace ComputerraBIN
                 DrawSymbol(workSymbol, emploee.Position, workColor);
                 return;
             }
-        }  
+        }
 
-        public void DrawSymbol(string symbol,Point position, ConsoleColor consoleColor)
+        public void DrawSymbol(string symbol, Point position, ConsoleColor consoleColor)
         {
             Console.ForegroundColor = consoleColor;
             Console.SetCursorPosition(position.CoordinateX, position.CoordinateY);
@@ -90,7 +90,17 @@ namespace ComputerraBIN
             {
                 DrawPositions(item);
             }
-            
+
         }
+    }
+    /// <summary>
+    /// Limits for determine borders
+    /// </summary>
+    public struct CoordinateLimits
+    {
+        public int CoordinateXMin { get; set; }
+        public int CoordinateXMax { get; set; }
+        public int CoordinateYMin { get; set; }
+        public int CoordinateYMax { get; set; }
     }
 }
