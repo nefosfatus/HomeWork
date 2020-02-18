@@ -57,5 +57,20 @@ namespace Triangle
             double area = Math.Sqrt(semiPerimetr * semiPerimetrMinusA * semiPerimetrMinusB * semiPerimetrMinusC); //sqrt(p*(p - AB)*(p - BC)*(p - CA))
             return area;
         }
+        /// <summary>
+        /// Calculate angle
+        /// </summary>
+        /// <param name="firstDistance">AB distance</param>
+        /// <param name="secondDistance">BC distance</param>
+        /// <param name="thirdDistance">CA distance</param>
+        /// <returns>Opposite third distance angle in degrees</returns>
+        public double CalculateAngle(double firstDistance, double secondDistance, double thirdDistance)
+        {
+            double numerator = Math.Pow(firstDistance, 2) + Math.Pow(secondDistance, 2) - Math.Pow(thirdDistance, 2);
+            double denomirator = 2 * firstDistance * secondDistance;
+            double angleAcos = Math.Acos(numerator/denomirator);
+            double angleInDegrees = angleAcos * (180 / Math.PI);
+            return angleInDegrees;
+        }
     }
 }

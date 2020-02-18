@@ -90,5 +90,15 @@
             string stringAnswer = $"[{this.xAxisNumber},{this.yAxisNumber},{this.zAxisNumber}]";
             return stringAnswer;
         }
+        public static bool operator ==(Vector vector1,Vector vector2)
+        {
+            return (vector1.xAxisNumber == vector2.xAxisNumber) && (vector1.yAxisNumber == vector2.yAxisNumber)
+                && (vector1.zAxisNumber == vector2.zAxisNumber);
+        }
+        public static bool operator !=(Vector vector1, Vector vector2)
+        {
+            return !((vector1.xAxisNumber == vector2.xAxisNumber) && (vector1.yAxisNumber == vector2.yAxisNumber)
+                && (vector1.zAxisNumber == vector2.zAxisNumber));
+        }
     }
 }

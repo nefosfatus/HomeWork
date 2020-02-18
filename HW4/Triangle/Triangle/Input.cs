@@ -15,12 +15,30 @@ namespace Triangle
         /// <returns>list with coordinates</returns>
         public List<int> GetCoordinates(string point)
         {
-            Console.WriteLine($"Введите координату Х точки {point}");
-            int xCoorinate = int.Parse(Console.ReadLine());
-            Console.WriteLine($"Введите координату Y точки {point}");
-            int yCoorinate = int.Parse(Console.ReadLine());
-            List<int> coordinates = new List<int>() { xCoorinate, yCoorinate };
-            return coordinates;
+            try
+            {
+                Console.WriteLine($"Введите координату Х точки {point}");
+                int xCoorinate = int.Parse(Console.ReadLine());
+                Console.WriteLine($"Введите координату Y точки {point}");
+                int yCoorinate = int.Parse(Console.ReadLine());
+                List<int> coordinates = new List<int>() { xCoorinate, yCoorinate };
+                return coordinates;
+            }
+            catch(OverflowException ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw;
+            }
+            catch(FormatException ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw;
+            }
         }
     }
 }

@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{687580C4-FE65-4F2C-8B3C-D7EAE55D4B99}</ProjectGuid>
+    <ProjectGuid>{4538EDBF-CF27-412B-8D6A-379BB2D07999}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Triangle</RootNamespace>
-    <AssemblyName>Triangle</AssemblyName>
+    <RootNamespace>Polynomial</RootNamespace>
+    <AssemblyName>Polynomial</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -22,7 +22,6 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -44,11 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Calculator.cs" />
     <Compile Include="Input.cs" />
+    <Compile Include="Polynomial.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Triangle.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

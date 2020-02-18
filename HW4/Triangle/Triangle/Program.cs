@@ -10,19 +10,29 @@ namespace Triangle
     {
         static void Main(string[] args)
         {
-            //initialize
-            Input input = new Input();
+            try
+            {
 
-            //Get user input - coordinates
-            List<int> pointACoorinates = input.GetCoordinates("A");
-            List<int> pointBCoorinates = input.GetCoordinates("B");
-            List<int> pointCCoorinates =  input.GetCoordinates("C");
+    
+                //initialize
+                Input input = new Input();
 
-            //create new trianlge
-            Triangle triangle = new Triangle(pointACoorinates, pointBCoorinates, pointCCoorinates);
+                //Get user input - coordinates
+                List<int> pointACoorinates = input.GetCoordinates("A");
+                List<int> pointBCoorinates = input.GetCoordinates("B");
+                List<int> pointCCoorinates =  input.GetCoordinates("C");
 
-            //get info about triangle
-            triangle.GetTriangleInfo();
+                //create new trianlge
+                Triangle triangle = new Triangle(pointACoorinates, pointBCoorinates, pointCCoorinates);
+
+                //get info about triangle
+                triangle.GetTriangleInfo();
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.Message);
+            }
 
             Console.ReadKey();
         }

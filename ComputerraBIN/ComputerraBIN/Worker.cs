@@ -11,6 +11,7 @@ namespace ComputerraBIN
     /// </summary>
     public class Worker : Emploee, IManagable
     {
+        public string Symbol { get; } = "W";
         /// <summary>
         /// do what the authorities say
         /// after that mood is decreasing but salary is increasing
