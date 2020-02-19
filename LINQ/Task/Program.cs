@@ -21,6 +21,7 @@ namespace Task
 
 			//максимальный суммарный оборот
 			decimal maximumTotalTurnover = 4000;
+			//максимальная сумма заказа
 			decimal maximumOrderPrice = 800;
 
 			//заказы первого клиента
@@ -30,33 +31,37 @@ namespace Task
 			var summFirstOrderOfOFirstCustomer = customers.First().Orders.First().Total;
 
 			//список всех клиентов, чей суммарный оборот превосходит максимальный
-			var customerWhichOverupMaxTotal = customers.Where(c => (c.Orders.Sum(r=>r.Total)) > maximumTotalTurnover).Select(s=>s.CompanyName);
+			var customerWhichOverupMaxTotal = customers.Where(c => (c.Orders.Sum(r=>r.Total)) > maximumTotalTurnover);
 
 			//все клиенты, у которых были заказы, превосходящие по сумме величину X
-			var customerWhichOverupMaxPrice = customers.Where(c => c.Orders.Any(r => r.Total > maximumOrderPrice)).Select(s => s.CompanyName);
-			
+			var customerWhichOverupMaxPrice = customers.Where(c => c.Orders.Any(r => r.Total > maximumOrderPrice));
+
 			//список поставщиков, находящихся в той же стране и том же городе
-			foreach (var item in customers)
-			{
-				foreach(var it in suppliers)
-				{
-					if ((item.City == it.City)&&(item.Country == it.Country)){
-						
-					}
-				}
-			}
+			var localSuppliersForEachCustomer = customers.Select(c => new {
+				Name = c.CompanyName,
+				SuppliersList = suppliers.Where(n=>n.Country==c.Country && n.City == c.City)
+			});
 
 			//Укажите всех клиентов, у которых указан нецифровой почтовый код или не заполнен регион
 			//или в телефоне не указан код оператора
 			char rightBracket = ')';
 			char leftBracket = '(';
-			var unreferencedCustomers = customers.Where(c => (c.Region == null)
+			var unreferencedCustomers = customers.Where(c=>c.PostalCode!=null).Where(c => 
+															(c.Region==null)
 															||(c.Phone.ToString().Contains(rightBracket)&&c.Phone.ToString().Contains(leftBracket))
-															||(c.PostalCode.ToString().Any(r=>char.IsSymbol(r)))
+															||(c.PostalCode.Any(n => char.IsLetter(n)))
 															);
-			var unreferencedCustomers1 = customers.Where(c => (c.Phone.ToString().Contains(rightBracket) && c.Phone.ToString().Contains(leftBracket)));
-			var unreferencedCustomers2 = customers.Where(c => (c.PostalCode.ToString().Any(r => char.IsSymbol(r))));
-			var unreferencedCustomers3 = customers.Where(c => (c.Region == null));
+
+			//Сгруппируйте товары по группам «дешевые», «средняя цена», «дорогие». Границы каждой группы задайте сами
+			decimal cheapOraderBoard = 30;
+			decimal middleOraderBoard = 70;
+
+			var ordersGroupsByTotal = new
+			{
+				CheapProducts = product.Where(s=>s.UnitPrice<cheapOraderBoard),
+				MiddleProducts = product.Where(s => s.UnitPrice < middleOraderBoard),
+				ExpensiveProducts = product.Where(s => s.UnitPrice > middleOraderBoard)
+			};
 		}
 	}
 }
